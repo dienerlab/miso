@@ -1,7 +1,7 @@
-<img src="https://github.com/Gibbons-Lab/miso/raw/main/inst/extdata/logo.png" width="25%" align="right">
+<img src="https://github.com/dienerlab/miso/raw/main/inst/extdata/logo.png" width="25%" align="right">
 
-![R-CMD-check](https://github.com/Gibbons-Lab/miso/workflows/R-CMD-check/badge.svg)
-[![codecov](https://codecov.io/gh/Gibbons-Lab/miso/branch/main/graph/badge.svg)](https://codecov.io/gh/dienerlab/miso)
+![R-CMD-check](https://github.com/dienerlab/miso/workflows/R-CMD-check/badge.svg)
+[![codecov](https://codecov.io/gh/dienerlab/miso/branch/main/graph/badge.svg)](https://codecov.io/gh/dienerlab/miso)
 
 
 

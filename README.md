@@ -5,9 +5,11 @@
 
 
 
-`miso`, short for *mi*crobiome *so*ftware is a collection of helpers that we use to analyze microbiome
+`miso`, short for **mi**crobiome **so**ftware is a collection of helpers that we use to analyze microbiome
 data. It makes it easier to run some common analyses and is pretty
 opinionated towards our own experiences.
+
+<br><br>
 
 ## General philosophy
 

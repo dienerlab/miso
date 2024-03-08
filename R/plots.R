@@ -13,6 +13,7 @@
 #'  factors.
 #' @param pc The pseudo count to add.
 #' @param only_data Only get the raw data for the plot.
+#' @param zeros Whether to also include zero counts.
 #' @return Nothing.
 #' @examples
 #'  NULL

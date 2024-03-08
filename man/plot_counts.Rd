@@ -11,7 +11,8 @@ plot_counts(
   taxa = NULL,
   normalized = TRUE,
   pc = 0.5,
-  only_data = FALSE
+  only_data = FALSE,
+  zeros = TRUE
 )
 }
 \arguments{
@@ -30,6 +31,8 @@ factors.}
 \item{pc}{The pseudo count to add.}
 
 \item{only_data}{Only get the raw data for the plot.}
+
+\item{zeros}{Whether to also include zero counts.}
 }
 \value{
 Nothing.

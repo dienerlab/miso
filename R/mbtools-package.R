@@ -4,5 +4,4 @@
 #' of microbial community analysis.
 #'
 #' @name mbtools
-#' @docType package
-NULL
+"_PACKAGE"

@@ -2,9 +2,22 @@
 % Please edit documentation in R/mbtools-package.R
 \docType{package}
 \name{mbtools}
+\alias{mbtools-package}
 \alias{mbtools}
 \title{mbtools.}
 \description{
 `mbtools` includes several helper functions for analysis and benchmarking
 of microbial community analysis.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/dienerlab/miso}
+  \item Report bugs at \url{https://github.com/dienerlab/miso/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Christian Diener \email{mail@dienerlab.com}
+
 }

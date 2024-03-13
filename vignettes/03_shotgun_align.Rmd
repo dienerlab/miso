@@ -12,11 +12,11 @@ vignette: >
 
 # Shotgun metagenomics
 
-`mbtools` has support for aligning shotgun metagenomic reads. Before proceeding
+`miso` has support for aligning shotgun metagenomic reads. Before proceeding
 we recommend you preprocess the reads first as described in an earlier vignette.
 
 ```{r, message=FALSE}
-library(mbtools)
+library(miso)
 ```
 
 # Aligning reads
@@ -33,10 +33,10 @@ from a list of 10 reference genomes in equal abundances.
 Let's create our file list for the example data and reference database:
 
 ```{r}
-fi <- system.file("extdata/shotgun", package = "mbtools") %>%
+fi <- system.file("extdata/shotgun", package = "miso") %>%
       find_read_files()
 ref <- system.file("extdata/genomes/zymo_mock.fna.gz",
-                   package = "mbtools")
+                   package = "miso")
 ```
 
 Which are 3 paired-end files.

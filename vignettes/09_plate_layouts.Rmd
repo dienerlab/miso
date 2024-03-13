@@ -11,13 +11,13 @@ vignette: >
 ---
 
 Before even having sequencing data you will have to extract DNA or RNA from possibly many samples. This is often
-done on 96-well plates which requires designing layouts for many plates. `mbtools` provides a few helpers for that.
+done on 96-well plates which requires designing layouts for many plates. `miso` provides a few helpers for that.
 
-The only thing you will need is yet again a sample manifest. This will need to have an id column again. 
+The only thing you will need is yet again a sample manifest. This will need to have an id column again.
 Let's make one for a somewhat larger experiment.
 
 ```{r}
-library(mbtools)
+library(miso)
 
 manifest <- data.table(
     id = paste0("S", 1:640),

@@ -16,12 +16,12 @@ One basic anaylisis we want to perform is to count the abundance of some referen
 in our data. Here reference is a broad term and may refer to transcripts, genomes,
 or amplicon sequences contained in a reference database.
 
-For this `mbtools` implements a general purpose expectation maximization (EM) counter.
+For this `miso` implements a general purpose expectation maximization (EM) counter.
 It is implemented in C++ to perform fast and usually reading the alignment file takes
 longer than the actual analysis.
 
 ```{r}
-library(mbtools)
+library(miso)
 ```
 
 ## Alignment
@@ -30,10 +30,10 @@ Let's start by aligning our short read data to a reference database of 10 microb
 genomes.
 
 ```{r}
-fi <- system.file("extdata/shotgun", package = "mbtools") %>%
+fi <- system.file("extdata/shotgun", package = "miso") %>%
       find_read_files()
 ref <- system.file("extdata/genomes/zymo_mock.fna.gz",
-                   package = "mbtools")
+                   package = "miso")
 
 alns <- align_short_reads(
     fi,
@@ -49,7 +49,7 @@ Counting is yet again a workflow and requires an alignment artifact and a config
 ```{r}
 config <- config_count(
     reference = system.file("extdata/genomes/zymo_mock.fna.gz",
-                            package = "mbtools"),
+                            package = "miso"),
     threads = 1,
     weights = TRUE
 )

@@ -9,7 +9,7 @@
 #'  read after accounting for mismatches and indels.
 #' @return The effective lengths.
 effective_lengths <- function(txlengths, rdlengths) {
-    .Call(`_mbtools_effective_lengths`, txlengths, rdlengths)
+    .Call(`_miso_effective_lengths`, txlengths, rdlengths)
 }
 
 #' Count transcripts using an Expectation Maximization (EM) algorithm.
@@ -34,6 +34,6 @@ effective_lengths <- function(txlengths, rdlengths) {
 #'      \item{change}{The last osbserved absolute change in transcript counts}
 #'     }
 em_count <- function(txreads, txlengths, weights, ntx, nr, maxit = 1000L, reltol = 0.01, abstol = 0.01) {
-    .Call(`_mbtools_em_count`, txreads, txlengths, weights, ntx, nr, maxit, reltol, abstol)
+    .Call(`_miso_em_count`, txreads, txlengths, weights, ntx, nr, maxit, reltol, abstol)
 }
 

@@ -11,9 +11,9 @@ test_that("configuration is good", {
     expect_equal(config$threads, 2)
 })
 
-path <- system.file("extdata/shotgun", package = "mbtools")
+path <- system.file("extdata/shotgun", package = "miso")
 ref <- system.file("extdata/genomes/zymo_mock.fna.gz",
-                   package = "mbtools")
+                   package = "miso")
 files <- find_read_files(path)[1:2]
 
 test_that("alignments work", {

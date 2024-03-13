@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amplicon sequencing analysis • mbtools</title>
+<title>Amplicon sequencing analysis • miso</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">mbtools</a>
+        <a class="navbar-link" href="../index.html">miso</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.34.2</span>
       </span>
     </div>
@@ -66,7 +66,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Gibbons-Lab/mbtools">
+  <a href="https://github.com/Gibbons-Lab/miso">
     <span class="fa fa-github fa-lg"></span>
 
   </a>
@@ -87,7 +87,7 @@
                         <h4 class="author">Christian Diener</h4>
 
 
-      <small class="dont-index">Source: <a href="https://github.com/Gibbons-Lab/mbtools/blob/master/vignettes/amplicon_sequencing.Rmd"><code>vignettes/amplicon_sequencing.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Gibbons-Lab/miso/blob/master/vignettes/amplicon_sequencing.Rmd"><code>vignettes/amplicon_sequencing.Rmd</code></a></small>
       <div class="hidden name"><code>amplicon_sequencing.Rmd</code></div>
 
     </div>
@@ -98,8 +98,8 @@
 <h1 class="hasAnchor">
 <a href="#amplicon-sequencing-data-analysis" class="anchor"></a>Amplicon sequencing data analysis</h1>
 <p>We can combine what we have seen in the quality assessment and preprocessing tutoarials with specific workflow steps for amplicon sequencing, for instance 16S rRNA gene sequencing.</p>
-<p>As before we will load <code>mbtools</code> and use our example data:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(mbtools)</a></code></pre></div>
+<p>As before we will load <code>miso</code> and use our example data:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(miso)</a></code></pre></div>
 <pre><code>## Registered S3 methods overwritten by 'ggplot2':
 ##   method         from
 ##   [.quosures     rlang
@@ -119,11 +119,11 @@
 <pre><code>## Found tools:</code></pre>
 <pre><code>##   - minimap2=2.15-r905</code></pre>
 <pre><code>##
-## Attaching package: 'mbtools'</code></pre>
+## Attaching package: 'miso'</code></pre>
 <pre><code>## The following object is masked _by_ 'package:BiocGenerics':
 ##
 ##     normalize</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">path &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/16S"</span>, <span class="dt">package =</span> <span class="st">"mbtools"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">path &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/16S"</span>, <span class="dt">package =</span> <span class="st">"miso"</span>)</a></code></pre></div>
 <div id="quality-assessment" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quality-assessment" class="anchor"></a>Quality assessment</h2>
@@ -207,17 +207,17 @@
 <a class="sourceLine" id="cb22-2" title="2">files[, run <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rep">rep</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">times =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>))]</a>
 <a class="sourceLine" id="cb22-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/print">print</a></span>(files)</a></code></pre></div>
 <pre><code>##                                                                                                   forward
-## 1: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/F3D0_S188_L001_R1_001.fastq.gz
-## 2: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/F3D1_S189_L001_R1_001.fastq.gz
-## 3: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/F3D2_S190_L001_R1_001.fastq.gz
-## 4: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/F3D3_S191_L001_R1_001.fastq.gz
-## 5: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/Mock_S280_L001_R1_001.fastq.gz
+## 1: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/F3D0_S188_L001_R1_001.fastq.gz
+## 2: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/F3D1_S189_L001_R1_001.fastq.gz
+## 3: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/F3D2_S190_L001_R1_001.fastq.gz
+## 4: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/F3D3_S191_L001_R1_001.fastq.gz
+## 5: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/Mock_S280_L001_R1_001.fastq.gz
 ##                                                                                                   reverse
-## 1: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/F3D0_S188_L001_R2_001.fastq.gz
-## 2: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/F3D1_S189_L001_R2_001.fastq.gz
-## 3: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/F3D2_S190_L001_R2_001.fastq.gz
-## 4: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/F3D3_S191_L001_R2_001.fastq.gz
-## 5: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/mbtools/extdata/16S/Mock_S280_L001_R2_001.fastq.gz
+## 1: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/F3D0_S188_L001_R2_001.fastq.gz
+## 2: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/F3D1_S189_L001_R2_001.fastq.gz
+## 3: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/F3D2_S190_L001_R2_001.fastq.gz
+## 4: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/F3D3_S191_L001_R2_001.fastq.gz
+## 5: /home/cdiener/R/x86_64-pc-linux-gnu-library/3.6/miso/extdata/16S/Mock_S280_L001_R2_001.fastq.gz
 ##      id injection_order lane run
 ## 1: F3D0             188    1   1
 ## 2: F3D1             189    1   1
@@ -257,7 +257,7 @@
 <p>For all further analyses you might want to work with a data type which is more suited for amplicon abundance data. You can directly obtain a phyloseq object with</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">ps &lt;-<span class="st"> </span><span class="kw"><a href="../reference/as_phyloseq.html">as_phyloseq</a></span>(denoised)</a></code></pre></div>
 <p>It is possible to pass in metadata as a data frame with <code>to_phyloseq(object, metadata = df)</code>.</p>
-<p>You can now use all additional functions from <code>mbtools</code> on that. For instance we can get the ASV counts in a tidy data table:</p>
+<p>You can now use all additional functions from <code>miso</code> on that. For instance we can get the ASV counts in a tidy data table:</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">asv_counts &lt;-<span class="st"> </span><span class="kw"><a href="../reference/taxa_count.html">taxa_count</a></span>(ps, <span class="dt">lev =</span> <span class="ot">NA</span>)</a>
 <a class="sourceLine" id="cb27-2" title="2">asv_counts[sample <span class="op">==</span><span class="st"> "Mock"</span> <span class="op">&amp;</span><span class="st"> </span>reads <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>]</a></code></pre></div>
 <pre><code>##     sample                             taxa reads

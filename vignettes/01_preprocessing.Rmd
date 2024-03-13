@@ -17,7 +17,7 @@ For filtering and trimming of the raw reads we usually use the DADA2 functions
 but wrap them in a reproducible workflow step.
 
 ```{r}
-library(mbtools)
+library(miso)
 ```
 
 ## Finding your files
@@ -25,14 +25,14 @@ library(mbtools)
 We will again use our helper function to get a list of sequencing files.
 
 ```{r}
-path <- system.file("extdata/16S", package = "mbtools")
+path <- system.file("extdata/16S", package = "miso")
 files <- find_read_files(path)
 print(files)
 ```
 
 ## Configuration
 
-All `mbtools` workflow step come with corresponding `config_*` that returns
+All `miso` workflow step come with corresponding `config_*` that returns
 an example/default configuration. Changes can be done a-posteriori or by
 directly passing in the parameters. We will specify a temporary directory as
 storage point for the preprocessed data and truncate the forward reads to

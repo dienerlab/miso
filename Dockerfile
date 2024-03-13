@@ -6,9 +6,9 @@ RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends \
     curl -L https://github.com/lh3/minimap2/releases/download/v2.13/minimap2-2.13_x64-linux.tar.bz2 | tar -jxvf - /usr/bin/minimap2
 
 # Setup dependencies
-RUN Rscript -e "install.packages(c('devtools', 'BiocManager'); \
+RUN Rscript -e "install.packages(c('remotes', 'BiocManager'); \
     BiocManager::install(); setRepositories(ind=1:4); \
-    devtools::install_github('Gibbons-Lab/mbtools')" \
+    remotes::install_github('dienerlab/miso')" \
     && rm -rf /tmp/*
 
 RUN mkdir /home/rstudio/data

@@ -10,14 +10,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-The API design of `mbtools` makes it well suited for workflow managers. This
+The API design of `miso` makes it well suited for workflow managers. This
 is particularly useful when you have longer analysis chains. For instance, let's
 look at an example workflow. We start with the config:
 
 ```{r}
-library(mbtools)
-ref <- system.file("extdata/genomes/zymo_mock.fna.gz", package = "mbtools")
-reads <- system.file("extdata/nanopore", package = "mbtools")
+library(miso)
+ref <- system.file("extdata/genomes/zymo_mock.fna.gz", package = "miso")
+reads <- system.file("extdata/nanopore", package = "miso")
 
 conf_p <- config_preprocess(
     trimLeft = 10,
@@ -63,7 +63,7 @@ the code way more convoluted. Also this would not tell us if the input files cha
 
 One popular workflow manager for R is [drake](https://ropensci.github.io/drake/) which
 will automatically track what needs to be recomputed and what not. This requires
-only minimal changes to `mbtools` workflows, mostly wrapping all input and
+only minimal changes to `miso` workflows, mostly wrapping all input and
 output location with `file_in` and `file_out`.
 
 ```{r}

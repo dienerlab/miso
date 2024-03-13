@@ -15,7 +15,7 @@ read_bam <- function(path, tags = c("AS", "de")) {
     return(bam)
 }
 
-#' @useDynLib mbtools, .registration = TRUE
+#' @useDynLib miso, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' @importFrom stats quantile
 count_alns <- function(alignments, reflengths, file, method = "em",

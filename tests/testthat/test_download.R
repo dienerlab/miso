@@ -4,7 +4,7 @@ flog.threshold(WARN)
 
 test_that("we can download files", {
     fi <- data.table(
-        url = "https://github.com/Gibbons-Lab/mbtools/raw/master/R/000_config.R",
+        url = "https://github.com/Gibbons-Lab/miso/raw/master/R/000_config.R",
         target = file.path(tempdir(), "test.R"),
         description = "test file"
     )

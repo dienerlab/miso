@@ -19,21 +19,21 @@ per-sample workflow for that which has not worked well for me since we
 usually analyze medium to large batches of samples. The functions here
 are meant to facilitate this particular workflow.
 
-First start by loading mbtools:
+First start by loading miso:
 
 ```{r}
-library(mbtools)
+library(miso)
 ```
 
 ## Finding your files
 
-`mbtools` includes helpers to find your sequencing files. It works out
+`miso` includes helpers to find your sequencing files. It works out
 of the box for normal Illumina file names (the ones you get from basespace).
 There is a small example data set in our package which we can use to
 illustrate that.
 
 ```{r}
-path <- system.file("extdata/16S", package = "mbtools")
+path <- system.file("extdata/16S", package = "miso")
 files <- find_read_files(path)
 print(files)
 ```

@@ -30,10 +30,10 @@ often use in the lab. It is supposed to remove some common pain points we encoun
 For `misos` a workflow step is based on input data and a configuration,
 thus having the function signature `step(object, config)`.
 Most steps can be chained with the pipe operator to yield workflows.
-For instance, the following is a possible workflow with `mbtools`:
+For instance, the following is a possible workflow with `miso`:
 
 ```r
-library(mbtools)
+library(miso)
 
 config <- list(
     demultiplex = config_demultiplex(barcodes = c("ACGTA", "AGCTT")),

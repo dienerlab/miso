@@ -47,9 +47,9 @@ read_blast <- function(matches) {
 }
 
 
-#' Very simple select for mbtools artifacts. Just gets a particular entry.
+#' Very simple select for miso artifacts. Just gets a particular entry.
 #'
-#' @param object A mbtools artifact returned from a workflow step.
+#' @param object A miso artifact returned from a workflow step.
 #' @param entry The name of the entry to get.
 #' @return The requested entry.
 #' @export

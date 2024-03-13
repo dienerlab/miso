@@ -5,9 +5,14 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // effective_lengths
 NumericVector effective_lengths(NumericVector txlengths, NumericVector rdlengths);
-RcppExport SEXP _mbtools_effective_lengths(SEXP txlengthsSEXP, SEXP rdlengthsSEXP) {
+RcppExport SEXP _miso_effective_lengths(SEXP txlengthsSEXP, SEXP rdlengthsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,7 +24,7 @@ END_RCPP
 }
 // em_count
 List em_count(NumericMatrix txreads, NumericVector txlengths, NumericVector weights, int ntx, int nr, unsigned int maxit, double reltol, double abstol);
-RcppExport SEXP _mbtools_em_count(SEXP txreadsSEXP, SEXP txlengthsSEXP, SEXP weightsSEXP, SEXP ntxSEXP, SEXP nrSEXP, SEXP maxitSEXP, SEXP reltolSEXP, SEXP abstolSEXP) {
+RcppExport SEXP _miso_em_count(SEXP txreadsSEXP, SEXP txlengthsSEXP, SEXP weightsSEXP, SEXP ntxSEXP, SEXP nrSEXP, SEXP maxitSEXP, SEXP reltolSEXP, SEXP abstolSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -37,12 +42,12 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_mbtools_effective_lengths", (DL_FUNC) &_mbtools_effective_lengths, 2},
-    {"_mbtools_em_count", (DL_FUNC) &_mbtools_em_count, 8},
+    {"_miso_effective_lengths", (DL_FUNC) &_miso_effective_lengths, 2},
+    {"_miso_em_count", (DL_FUNC) &_miso_em_count, 8},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_mbtools(DllInfo *dll) {
+RcppExport void R_init_miso(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

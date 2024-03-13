@@ -11,7 +11,7 @@ test_that("configuration is good", {
     expect_equal(config$maxEE, 3)
 })
 
-path <- system.file("extdata/16S", package = "mbtools")
+path <- system.file("extdata/16S", package = "miso")
 files <- find_read_files(path)
 
 test_that("preprocessing works", {

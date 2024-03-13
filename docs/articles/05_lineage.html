@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>5 - Lineage calling with SLIMM • mbtools</title>
+<title>5 - Lineage calling with SLIMM • miso</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">mbtools</a>
+        <a class="navbar-link" href="../index.html">miso</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.40.1</span>
       </span>
     </div>
@@ -39,7 +39,7 @@
 <li>
   <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
-     
+
   </a>
 </li>
 <li>
@@ -48,7 +48,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -87,9 +87,9 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Gibbons-Lab/mbtools">
+  <a href="https://github.com/Gibbons-Lab/miso">
     <span class="fa fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -100,26 +100,26 @@
 </div>
 <!--/.navbar -->
 
-      
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>5 - Lineage calling with SLIMM</h1>
-            
-      
-      <small class="dont-index">Source: <a href="https://github.com/Gibbons-Lab/mbtools/blob/master/vignettes/05_lineage.Rmd"><code>vignettes/05_lineage.Rmd</code></a></small>
+
+
+      <small class="dont-index">Source: <a href="https://github.com/Gibbons-Lab/miso/blob/master/vignettes/05_lineage.Rmd"><code>vignettes/05_lineage.Rmd</code></a></small>
       <div class="hidden name"><code>05_lineage.Rmd</code></div>
 
     </div>
 
-    
-    
+
+
 <div id="lineage-calling" class="section level1">
 <h1 class="hasAnchor">
 <a href="#lineage-calling" class="anchor"></a>Lineage calling</h1>
 <p>One thing you might want to do with metagenomics data is to identify the species present in your sample. Here we will use <a href="https://github.com/seqan/slimm">SLIMM</a> which is a binning based classifier similar to Kraken.</p>
 <p>The reason we often use SLIMM is that it generates cleaned species-level coverage maps as a side effect which we use extensively.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(mbtools)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(miso)</span></code></pre></div>
 <pre><code>## Also loading:</code></pre>
 <pre><code>##   - dada2=1.12.1
 ##   - data.table=1.12.6
@@ -132,32 +132,32 @@
 <pre><code>##   - minimap2=2.17-r941
 ##   - slimm=0.3.4
 ##   - samtools=1.9</code></pre>
-<pre><code>## 
-## Attaching package: 'mbtools'</code></pre>
+<pre><code>##
+## Attaching package: 'miso'</code></pre>
 <pre><code>## The following object is masked _by_ 'package:BiocGenerics':
-## 
+##
 ##     normalize</code></pre>
 <pre><code>## The following object is masked from 'package:graphics':
-## 
+##
 ##     layout</code></pre>
 <div id="getting-the-slimm-db" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-the-slimm-db" class="anchor"></a>Getting the SLIMM DB</h2>
 <p>We will use our shotgun data again since the reference genomes are also included in the SLIMM database. For real data you will want to align against the full SLIMM database of ~15K genomes.</p>
 <p><em>Download instructions will come soon :/</em></p>
-<p>For now we will only use the SLIMM taxonomy mapping database which is delivered with mbtools as well.</p>
+<p>For now we will only use the SLIMM taxonomy mapping database which is delivered with miso as well.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>slimm_db &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/ABVF_SP_CMP_genomes.sldb"</span>,</span>
-<span id="cb9-2"><a href="#cb9-2"></a>                        <span class="dt">package =</span> <span class="st">"mbtools"</span>)</span></code></pre></div>
+<span id="cb9-2"><a href="#cb9-2"></a>                        <span class="dt">package =</span> <span class="st">"miso"</span>)</span></code></pre></div>
 <p>which will save the db in the folder <code>refs</code>.</p>
 </div>
 <div id="aligning-shotgun-reads" class="section level2">
 <h2 class="hasAnchor">
 <a href="#aligning-shotgun-reads" class="anchor"></a>Aligning shotgun reads</h2>
 <p>One advantage of SLIMM is that it is relatively agnostic to the alignment program. So we can use our normal alignment workflow.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>fi &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/shotgun"</span>, <span class="dt">package =</span> <span class="st">"mbtools"</span>) <span class="op">%&gt;%</span></span>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>fi &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/shotgun"</span>, <span class="dt">package =</span> <span class="st">"miso"</span>) <span class="op">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="st">      </span><span class="kw"><a href="../reference/find_read_files.html">find_read_files</a></span>()</span>
 <span id="cb10-3"><a href="#cb10-3"></a>ref &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/genomes/zymo_mock.fna.gz"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4"></a>                   <span class="dt">package =</span> <span class="st">"mbtools"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4"></a>                   <span class="dt">package =</span> <span class="st">"miso"</span>)</span>
 <span id="cb10-5"><a href="#cb10-5"></a></span>
 <span id="cb10-6"><a href="#cb10-6"></a>alns &lt;-<span class="st"> </span><span class="kw"><a href="../reference/align_short_reads.html">align_short_reads</a></span>(</span>
 <span id="cb10-7"><a href="#cb10-7"></a>    fi,</span>
@@ -181,27 +181,27 @@
 <span id="cb12-6"><a href="#cb12-6"></a>config</span></code></pre></div>
 <pre><code>## $reports
 ## NULL
-## 
+##
 ## $bin_width
 ## [1] 1000
-## 
+##
 ## $relative_cutoff
 ## [1] 0
-## 
+##
 ## $database
-## [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/mbtools/extdata/ABVF_SP_CMP_genomes.sldb"
-## 
+## [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/miso/extdata/ABVF_SP_CMP_genomes.sldb"
+##
 ## $threads
 ## [1] 3
-## 
+##
 ## $rank
 ## [1] "species"
-## 
+##
 ## attr(,"class")
 ## [1] "config"</code></pre>
 <p>With this we can perform the SLIMM workflow.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>sl &lt;-<span class="st"> </span><span class="kw"><a href="../reference/slimm.html">slimm</a></span>(alns, config)</span></code></pre></div>
-<pre><code>## INFO [2019-11-05 08:20:38] running SLIMM on 3 alignments with database /Library/Frameworks/R.framework/Versions/3.6/Resources/library/mbtools/extdata/ABVF_SP_CMP_genomes.sldb.
+<pre><code>## INFO [2019-11-05 08:20:38] running SLIMM on 3 alignments with database /Library/Frameworks/R.framework/Versions/3.6/Resources/library/miso/extdata/ABVF_SP_CMP_genomes.sldb.
 ## INFO [2019-11-05 08:20:38] Parsing abundances on rank `species`.
 ## INFO [2019-11-05 08:20:38] Fixing taxa names.
 ## INFO [2019-11-05 08:20:38] Estimating read lengths from a sample of 100 reads per alignment.
@@ -457,7 +457,7 @@
       </footer>
 </div>
 
-  
+
 
   </body>
 </html>

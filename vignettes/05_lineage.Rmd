@@ -20,7 +20,7 @@ The reason we often use SLIMM is that it generates cleaned species-level coverag
 maps as a side effect which we use extensively.
 
 ```{r}
-library(mbtools)
+library(miso)
 ```
 
 ## Getting the SLIMM DB
@@ -32,11 +32,11 @@ SLIMM database of ~15K genomes.
 *Download instructions will come soon :/*
 
 For now we will only use the SLIMM taxonomy mapping database which is delivered with
-mbtools as well.
+miso as well.
 
 ```{r}
 slimm_db <- system.file("extdata/ABVF_SP_CMP_genomes.sldb",
-                        package = "mbtools")
+                        package = "miso")
 ```
 
 which will save the db in the folder `refs`.
@@ -47,10 +47,10 @@ One advantage of SLIMM is that it is relatively agnostic to the alignment progra
 we can use our normal alignment workflow.
 
 ```{r}
-fi <- system.file("extdata/shotgun", package = "mbtools") %>%
+fi <- system.file("extdata/shotgun", package = "miso") %>%
       find_read_files()
 ref <- system.file("extdata/genomes/zymo_mock.fna.gz",
-                   package = "mbtools")
+                   package = "miso")
 
 alns <- align_short_reads(
     fi,

@@ -11,10 +11,10 @@ test_that("configuration is good", {
     expect_equal(config$method, "naive")
 })
 
-fi <- system.file("extdata/shotgun", package = "mbtools") %>%
+fi <- system.file("extdata/shotgun", package = "miso") %>%
       find_read_files()
 ref <- system.file("extdata/genomes/zymo_mock.fna.gz",
-                   package = "mbtools")
+                   package = "miso")
 alns <- align_short_reads(fi, alignment_dir = file.path(tempdir(), "aln"),
                               reference = ref)
 

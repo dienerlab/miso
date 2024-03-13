@@ -11,7 +11,7 @@ vignette: >
 ---
 
 At some point of your project youy will want to make your data available to the public. This often required to happen in
-the form of a submission to the Sequence Read Archive (SRA), which can be challenging. `mbtools` includes helpers to
+the form of a submission to the Sequence Read Archive (SRA), which can be challenging. `miso` includes helpers to
 prep a submission for you.
 
 In order to create a submission you will need the following:
@@ -20,13 +20,13 @@ In order to create a submission you will need the following:
 2. A metadata table describing the sequenced samples.
 3. Some basic information about the study and sequencing.
 
-Number 1 is managed as in all other `mbtools` steps in that it is a file list such as used in quality control etc. For 
+Number 1 is managed as in all other `miso` steps in that it is a file list such as used in quality control etc. For
 instance for our example data:
 
 ```{r}
-library(mbtools)
+library(miso)
 
-fi <- system.file("extdata/shotgun", package = "mbtools") %>% find_read_files()
+fi <- system.file("extdata/shotgun", package = "miso") %>% find_read_files()
 ```
 
 Which gives you:
@@ -47,7 +47,7 @@ metadata <- data.table(
 )
 ```
 
-For the additional study data `mbtools` will use a set of presets that will set a lot of the
+For the additional study data `miso` will use a set of presets that will set a lot of the
 information for you but you will still need to specify additional aspects of your study. This is
 again managed by configurations and you can see the set of configuration variables by
 creating one with `config_sra`:
@@ -60,7 +60,7 @@ Except for the `bioproject` (fill only if you already have a BIOPROJECT ID) vari
 specified (or the default values will be used). You can check the the list of available presets with:
 
 ```{r}
-names(mbtools:::presets)
+names(miso:::presets)
 ```
 
 Let's fill in the data for the example study:

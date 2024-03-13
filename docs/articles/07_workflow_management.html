@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>7 - Workflow management • mbtools</title>
+<title>7 - Workflow management • miso</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
@@ -29,7 +29,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">mbtools</a>
+        <a class="navbar-link" href="../index.html">miso</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.40.1</span>
       </span>
     </div>
@@ -39,7 +39,7 @@
 <li>
   <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
-     
+
   </a>
 </li>
 <li>
@@ -48,7 +48,7 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -87,9 +87,9 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Gibbons-Lab/mbtools">
+  <a href="https://github.com/Gibbons-Lab/miso">
     <span class="fa fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -100,23 +100,23 @@
 </div>
 <!--/.navbar -->
 
-      
+
       </header><script src="07_workflow_management_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><link href="07_workflow_management_files/vis-4.20.1/vis.css" rel="stylesheet">
 <script src="07_workflow_management_files/vis-4.20.1/vis.min.js"></script><script src="07_workflow_management_files/visNetwork-binding-2.0.8/visNetwork.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>7 - Workflow management</h1>
-            
-      
-      <small class="dont-index">Source: <a href="https://github.com/Gibbons-Lab/mbtools/blob/master/vignettes/07_workflow_management.Rmd"><code>vignettes/07_workflow_management.Rmd</code></a></small>
+
+
+      <small class="dont-index">Source: <a href="https://github.com/Gibbons-Lab/miso/blob/master/vignettes/07_workflow_management.Rmd"><code>vignettes/07_workflow_management.Rmd</code></a></small>
       <div class="hidden name"><code>07_workflow_management.Rmd</code></div>
 
     </div>
 
-    
-    
-<p>The API design of <code>mbtools</code> makes it well suited for workflow managers. This is particularly useful when you have longer analysis chains. For instance, let’s look at an example workflow. We start with the config:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(mbtools)</span></code></pre></div>
+
+
+<p>The API design of <code>miso</code> makes it well suited for workflow managers. This is particularly useful when you have longer analysis chains. For instance, let’s look at an example workflow. We start with the config:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(miso)</span></code></pre></div>
 <pre><code>## Also loading:</code></pre>
 <pre><code>##   - dada2=1.12.1
 ##   - data.table=1.12.6
@@ -129,16 +129,16 @@
 <pre><code>##   - minimap2=2.17-r941
 ##   - slimm=0.3.4
 ##   - samtools=1.9</code></pre>
-<pre><code>## 
-## Attaching package: 'mbtools'</code></pre>
+<pre><code>##
+## Attaching package: 'miso'</code></pre>
 <pre><code>## The following object is masked _by_ 'package:BiocGenerics':
-## 
+##
 ##     normalize</code></pre>
 <pre><code>## The following object is masked from 'package:graphics':
-## 
+##
 ##     layout</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>ref &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/genomes/zymo_mock.fna.gz"</span>, <span class="dt">package =</span> <span class="st">"mbtools"</span>)</span>
-<span id="cb9-2"><a href="#cb9-2"></a>reads &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/nanopore"</span>, <span class="dt">package =</span> <span class="st">"mbtools"</span>)</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>ref &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/genomes/zymo_mock.fna.gz"</span>, <span class="dt">package =</span> <span class="st">"miso"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a>reads &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata/nanopore"</span>, <span class="dt">package =</span> <span class="st">"miso"</span>)</span>
 <span id="cb9-3"><a href="#cb9-3"></a></span>
 <span id="cb9-4"><a href="#cb9-4"></a>conf_p &lt;-<span class="st"> </span><span class="kw"><a href="../reference/config_preprocess.html">config_preprocess</a></span>(</span>
 <span id="cb9-5"><a href="#cb9-5"></a>    <span class="dt">trimLeft =</span> <span class="dv">10</span>,</span>
@@ -170,15 +170,15 @@
 <div id="workflow-management-with-drake" class="section level2">
 <h2 class="hasAnchor">
 <a href="#workflow-management-with-drake" class="anchor"></a>Workflow management with drake</h2>
-<p>One popular workflow manager for R is <a href="https://ropensci.github.io/drake/">drake</a> which will automatically track what needs to be recomputed and what not. This requires only minimal changes to <code>mbtools</code> workflows, mostly wrapping all input and output location with <code>file_in</code> and <code>file_out</code>.</p>
+<p>One popular workflow manager for R is <a href="https://ropensci.github.io/drake/">drake</a> which will automatically track what needs to be recomputed and what not. This requires only minimal changes to <code>miso</code> workflows, mostly wrapping all input and output location with <code>file_in</code> and <code>file_out</code>.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(drake)</span></code></pre></div>
-<pre><code>## 
+<pre><code>##
 ## Attaching package: 'drake'</code></pre>
 <pre><code>## The following object is masked from 'package:ShortRead':
-## 
+##
 ##     clean</code></pre>
 <pre><code>## The following object is masked from 'package:S4Vectors':
-## 
+##
 ##     expand</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>reads &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/drake/topics/file_in">file_in</a></span>(<span class="st">"../inst/extdata/nanopore"</span>)</span>
 <span id="cb15-2"><a href="#cb15-2"></a></span>
@@ -215,7 +215,7 @@
 ## INFO [2019-11-05 08:21:54] Finished aligning even2.
 ## INFO [2019-11-05 08:21:57] Finished aligning even3.</code></pre>
 <pre><code>## target counting</code></pre>
-<pre><code>## INFO [2019-11-05 08:21:57] Getting reference lengths from /Library/Frameworks/R.framework/Versions/3.6/Resources/library/mbtools/extdata/genomes/zymo_mock.fna.gz...
+<pre><code>## INFO [2019-11-05 08:21:57] Getting reference lengths from /Library/Frameworks/R.framework/Versions/3.6/Resources/library/miso/extdata/genomes/zymo_mock.fna.gz...
 ## INFO [2019-11-05 08:21:57] Normalized IDs. Starting counting...</code></pre>
 <p>We can access our final output.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/drake/topics/readd">readd</a></span>(counting)<span class="op">$</span>counts <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>()</span></code></pre></div>
@@ -240,7 +240,7 @@
 <p>Which we can do with running counting again.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/drake/topics/make">make</a></span>(plan, <span class="dt">lock_envir =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
 <pre><code>## target counting</code></pre>
-<pre><code>## INFO [2019-11-05 08:21:58] Getting reference lengths from /Library/Frameworks/R.framework/Versions/3.6/Resources/library/mbtools/extdata/genomes/zymo_mock.fna.gz...
+<pre><code>## INFO [2019-11-05 08:21:58] Getting reference lengths from /Library/Frameworks/R.framework/Versions/3.6/Resources/library/miso/extdata/genomes/zymo_mock.fna.gz...
 ## INFO [2019-11-05 08:21:58] Normalized IDs. Starting counting...</code></pre>
 </div>
   </div>
@@ -269,7 +269,7 @@
       </footer>
 </div>
 
-  
+
 
   </body>
 </html>

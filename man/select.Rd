@@ -2,12 +2,12 @@
 % Please edit documentation in R/util.R
 \name{select}
 \alias{select}
-\title{Very simple select for mbtools artifacts. Just gets a particular entry.}
+\title{Very simple select for miso artifacts. Just gets a particular entry.}
 \usage{
 select(object, entry)
 }
 \arguments{
-\item{object}{A mbtools artifact returned from a workflow step.}
+\item{object}{A miso artifact returned from a workflow step.}
 
 \item{entry}{The name of the entry to get.}
 }
@@ -15,5 +15,5 @@ select(object, entry)
 The requested entry.
 }
 \description{
-Very simple select for mbtools artifacts. Just gets a particular entry.
+Very simple select for miso artifacts. Just gets a particular entry.
 }

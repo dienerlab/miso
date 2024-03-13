@@ -15,7 +15,7 @@ make_random_data <- function() {
     writeFastq(sr, file.path(d, "f.fastq.gz"))
     writeFastq(sr, file.path(d, "r.fastq.gz"))
 
-    index_folder <- system.file("extdata/genomes", package = "mbtools")
+    index_folder <- system.file("extdata/genomes", package = "miso")
     phix <- readFasta(file.path(index_folder, "phiX.fa.gz"))
     phix <- substr(as.character(sread(phix)[1]), 1, 100)
     sr <- ShortReadQ(sread = DNAStringSet(c(seqs[1:99], phix)),
@@ -42,7 +42,7 @@ test_that("sequences can be removed", {
     unlink(file.path(outpath), recursive = TRUE)
     dir.create(outpath, showWarnings = FALSE)
 
-    index_folder <- system.file("extdata/genomes", package = "mbtools")
+    index_folder <- system.file("extdata/genomes", package = "miso")
     reads <- data[1]
     conf <- config_reference(
         out_dir = outpath,
@@ -70,7 +70,7 @@ test_that("filtering works on full data sets", {
     d <- tempdir()
     dir.create(file.path(d, "out"), showWarnings = FALSE)
     outpath <- file.path(d, "out")
-    index_folder <- system.file("extdata/genomes", package = "mbtools")
+    index_folder <- system.file("extdata/genomes", package = "miso")
     conf <- config_reference(
         out_dir = outpath,
         reference = file.path(index_folder, "phiX.fa.gz")

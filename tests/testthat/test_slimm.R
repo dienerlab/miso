@@ -11,13 +11,13 @@ test_that("configuration is good", {
     expect_equal(config$database, "hello")
 })
 
-fi <- system.file("extdata/shotgun", package = "mbtools") %>%
+fi <- system.file("extdata/shotgun", package = "miso") %>%
       find_read_files()
 ref <- system.file("extdata/genomes/zymo_mock.fna.gz",
-                   package = "mbtools")
+                   package = "miso")
 alns <- align_short_reads(fi, alignment_dir = file.path(tempdir(), "aln"),
                               reference = ref)
-db <- system.file("extdata/ABVF_SP_CMP_genomes.sldb", package = "mbtools")
+db <- system.file("extdata/ABVF_SP_CMP_genomes.sldb", package = "miso")
 
 test_that("SLIMM works", {
     sl <- slimm(alns, database = db)

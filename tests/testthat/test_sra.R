@@ -12,7 +12,7 @@ test_that("configuration is good", {
 })
 
 out <- file.path(tempdir(), "sra")
-fi <- system.file("extdata/shotgun", package = "mbtools") %>% find_read_files()
+fi <- system.file("extdata/shotgun", package = "miso") %>% find_read_files()
 
 test_that("sra bundling works", {
     expect_error(sra_submission(fi))

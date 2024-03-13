@@ -1,7 +1,7 @@
-#' mbtools.
+#' miso.
 #'
-#' `mbtools` includes several helper functions for analysis and benchmarking
+#' `miso` includes several helper functions for analysis and benchmarking
 #' of microbial community analysis.
 #'
-#' @name mbtools
+#' @name miso
 "_PACKAGE"

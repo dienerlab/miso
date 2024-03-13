@@ -11,7 +11,7 @@ test_that("configuration is good", {
     expect_equal(config$trimLeft, 5)
 })
 
-path <- system.file("extdata/16S", package = "mbtools")
+path <- system.file("extdata/16S", package = "miso")
 files <- find_read_files(path)[1:2] %>%
          preprocess(out_dir = file.path(tempdir(), "pre"))
 

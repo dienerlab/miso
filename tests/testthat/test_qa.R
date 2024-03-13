@@ -2,7 +2,7 @@ context("quality control")
 
 flog.threshold(WARN)
 
-path <- system.file("extdata/16S", package = "mbtools")
+path <- system.file("extdata/16S", package = "miso")
 files <- find_read_files(path)
 
 test_that("we can run quality controls", {

@@ -17,11 +17,11 @@ We can combine what we have seen in the quality assessment and preprocessing
 tutoarials with specific workflow steps for amplicon sequencing, for instance
 16S rRNA gene sequencing.
 
-As before we will load `mbtools` and use our example data:
+As before we will load `miso` and use our example data:
 
 ```{r}
-library(mbtools)
-path <- system.file("extdata/16S", package = "mbtools")
+library(miso)
+path <- system.file("extdata/16S", package = "miso")
 ```
 
 ## Quality assessment
@@ -124,7 +124,7 @@ ps <- as_phyloseq(denoised)
 It is possible to pass in metadata as a data frame with
 `to_phyloseq(object, metadata = df)`.
 
-You can now use all additional functions from `mbtools` on that. For instance
+You can now use all additional functions from `miso` on that. For instance
 we can get the ASV counts in a tidy data table:
 
 ```{r}

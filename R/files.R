@@ -1,13 +1,17 @@
 # Helpers to manage read files
 
+#' @export
 illumina_pattern <-
     "([A-Za-z0-9\\-\\.]+)_S(\\d+)(?:_trimmed)*(?:_L(\\d+))*_R(\\d+)_001.f"
+#' @export
 illumina_annotations <- c("id", "injection_order", "lane", "direction")
-
+#' @export
 sra_pattern <- "([A-Za-z0-9\\-]+)_(\\d).fastq"
+#' @export
 sra_annotations <- c("id", "direction")
-
+#' @export
 simple_pattern <- "([A-Za-z0-9_\\-\\.]+)\\.f"
+#' @export
 simple_annotations <- c("id")
 
 annotate_files <- function(dir, pattern, annotations) {

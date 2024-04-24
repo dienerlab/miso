@@ -56,6 +56,13 @@ gut_envo <- c(
     env_medium = "fecal material [ENVO:00002003]"
 )
 
+skin_envo <- c(
+    env_broad_scale = paste0("environment associated with an animal part ",
+                             "or small animal [ENVO:01001055]"),
+    env_local_scale = "integumental system environment [ENVO:2100004]",
+    env_medium = "skin environment [ENVO:2100003]"
+)
+
 water_biofilm_envo <- c(
     env_broad_scale = "freshwater environment [ENVO:01000306]",
     env_local_scale = paste0("environment determined by a biofilm ",
@@ -69,6 +76,35 @@ in_vitro_envo <- c(
     env_medium = "cell culturing unit [ENVO:01001819]"
 )
 
+usage_16S <- paste0(
+    "You are now ready for submission. ",
+    "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
+    "log in and click on `New submission`. ",
+    "Fill in the general data for your project in steps ",
+    "1 through 3. In step 4 ",
+    "choose `Genome, metagenome or marker sequences ",
+    "(MIxS compliant)` and `Survey-related Marker ",
+    "Sequences MIMARKS`. In step 5 and 6 ",
+    "upload the respective files in %s. In step 7 you ",
+    "can directly upload the `*.tar.gz` submission ",
+    "package. Just click on `continue` another time to ",
+    "have the archive unpacked as indicated."
+)
+
+usage_mx <- paste0(
+    "You are now ready for submission. ",
+    "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
+    "log in and click on `New submission`. ",
+    "Fill in the general data for your project in steps ",
+    "1 through 3. In step 4 ",
+    "choose `Environmental/Metagenome ",
+    "Genomic Sequences MIMS` with the appropriate environment. In step 5 and 6 ",
+    "upload the respective files in %s. In step 7 you ",
+    "can directly upload the `*.tar.gz` submission ",
+    "package. Just click on `continue` another time to ",
+    "have the archive unpacked as indicated."
+)
+
 presets <- list(
     `human gut 16S` = c(
         gut_envo,
@@ -78,18 +114,7 @@ presets <- list(
         library_source = "GENOMIC",
         library_selection = "PCR",
         filetype = "fastq",
-        usage = paste0("You are now ready for submission. ",
-                       "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
-                       "log in and click on `New submission`. ",
-                       "Fill in the general data for your project in steps ",
-                       "1 through 3. In step 4 ",
-                       "choose `Genome, metagenome or marker sequences ",
-                       "(MIxS compliant)` and `Survey-related Marker ",
-                       "Sequences MIMARKS`. In step 5 and 6 ",
-                       "upload the respective files in %s. In step 7 you ",
-                       "can directly upload the `*.tar.gz` submission ",
-                       "package. Just click on `continue` another time to ",
-                       "have the archive unpacked as indicated.")
+        usage = usage_16S
     ),
     `mouse gut 16S` = c(
         gut_envo,
@@ -99,18 +124,7 @@ presets <- list(
         library_source = "GENOMIC",
         library_selection = "PCR",
         filetype = "fastq",
-        usage = paste0("You are now ready for submission. ",
-                       "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
-                       "log in and click on `New submission`. ",
-                       "Fill in the general data for your project in steps ",
-                       "1 through 3. In step 4 ",
-                       "choose `Genome, metagenome or marker sequences ",
-                       "(MIxS compliant)` and `Survey-related Marker ",
-                       "Sequences MIMARKS`. In step 5 and 6 ",
-                       "upload the respective files in %s. In step 7 you ",
-                       "can directly upload the `*.tar.gz` submission ",
-                       "package. Just click on `continue` another time to ",
-                       "have the archive unpacked as indicated.")
+        usage = usage_16S
     ),
     `human gut metagenome` = c(
         gut_envo,
@@ -120,21 +134,17 @@ presets <- list(
         library_source = "METAGENOMIC",
         library_selection = "RANDOM",
         filetype = "fastq",
-        usage = paste0("You are now ready for submission. ",
-                       "**Please make sure you only upload sequence files ",
-                       "where human sequences have been removed and (you can ",
-                       "use the `filter_reference` workflow for that)!**",
-                       "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
-                       "log in and click on `New submission`. ",
-                       "Fill in the general data for your project in steps ",
-                       "1 through 3. In step 4 ",
-                       "choose `Genome, metagenome or marker sequences ",
-                       "(MIxS compliant)` and `Environmental/Metagenome ",
-                       "Genomic Sequences MIMS`. In step 5 and 6 ",
-                       "upload the respective files in %s. In step 7 you ",
-                       "can directly upload the `*.tar.gz` submission ",
-                       "package. Just click on `continue` another time to ",
-                       "have the archive unpacked as indicated.")
+        usage = usage_mx
+    ),
+    `human skin metagenome` = c(
+        skin_envo,
+        organism = "human skin metagenome",
+        host = "Homo sapiens",
+        library_strategy = "WGS",
+        library_source = "METAGENOMIC",
+        library_selection = "RANDOM",
+        filetype = "fastq",
+        usage = usage_mx
     ),
     `mouse gut metagenome` = c(
         gut_envo,
@@ -144,18 +154,7 @@ presets <- list(
         library_source = "METAGENOMIC",
         library_selection = "RANDOM",
         filetype = "fastq",
-        usage = paste0("You are now ready for submission. ",
-                       "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
-                       "log in and click on `New submission`. ",
-                       "Fill in the general data for your project in steps ",
-                       "1 through 3. In step 4 ",
-                       "choose `Genome, metagenome or marker sequences ",
-                       "(MIxS compliant)` and `Environmental/Metagenome ",
-                       "Genomic Sequences MIMS`. In step 5 and 6 ",
-                       "upload the respective files in %s. In step 7 you ",
-                       "can directly upload the `*.tar.gz` submission ",
-                       "package. Just click on `continue` another time to ",
-                       "have the archive unpacked as indicated.")
+        usage = usage_mx
     ),
     `human gut RNA-Seq` = c(
         gut_envo,
@@ -165,21 +164,7 @@ presets <- list(
         library_source = "METATRANSCRIPTOMIC",
         library_selection = "RANDOM",
         filetype = "fastq",
-        usage = paste0("You are now ready for submission. ",
-                       "**Please make sure you only upload sequence files ",
-                       "where human sequences have been removed and (you can ",
-                       "use the `filter_reference` workflow for that)!**",
-                       "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
-                       "log in and click on `New submission`. ",
-                       "Fill in the general data for your project in steps ",
-                       "1 through 3. In step 4 ",
-                       "choose `Genome, metagenome or marker sequences ",
-                       "(MIxS compliant)` and `Environmental/Metagenome ",
-                       "Genomic Sequences MIMS`. In step 5 and 6 ",
-                       "upload the respective files in %s. In step 7 you ",
-                       "can directly upload the `*.tar.gz` submission ",
-                       "package. Just click on `continue` another time to ",
-                       "have the archive unpacked as indicated.")
+        usage = usage_mx
     ),
     `mouse gut RNA-Seq` = c(
         gut_envo,
@@ -189,18 +174,7 @@ presets <- list(
         library_source = "METATRANSCRIPTOMIC",
         library_selection = "RANDOM",
         filetype = "fastq",
-        usage = paste0("You are now ready for submission. ",
-                       "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
-                       "log in and click on `New submission`. ",
-                       "Fill in the general data for your project in steps ",
-                       "1 through 3. In step 4 ",
-                       "choose `Genome, metagenome or marker sequences ",
-                       "(MIxS compliant)` and `Environmental/Metagenome ",
-                       "Genomic Sequences MIMS`. In step 5 and 6 ",
-                       "upload the respective files in `%s`. In step 7 you ",
-                       "can directly upload the `*.tar.gz` submission ",
-                       "package. Just click on `continue` another time to ",
-                       "have the archive unpacked as indicated.")
+        usage = usage_mx
     ),
      `aquatic biofilm 16S` = c(
         water_biofilm_envo,
@@ -211,18 +185,7 @@ presets <- list(
         library_source = "GENOMIC",
         library_selection = "PCR",
         filetype = "fastq",
-        usage = paste0("You are now ready for submission. ",
-                       "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
-                       "log in and click on `New submission`. ",
-                       "Fill in the general data for your project in steps ",
-                       "1 through 3. In step 4 ",
-                       "choose `Genome, metagenome or marker sequences ",
-                       "(MIxS compliant)` and `Survey-related Marker ",
-                       "Sequences MIMARKS`. In step 5 and 6 ",
-                       "upload the respective files in %s. In step 7 you ",
-                       "can directly upload the `*.tar.gz` submission ",
-                       "package. Just click on `continue` another time to ",
-                       "have the archive unpacked as indicated.")
+        usage = usage_16S
     ),
     `in vitro metagenome` = c(
         in_vitro_envo,
@@ -231,18 +194,7 @@ presets <- list(
         library_source = "METAGENOMIC",
         library_selection = "RANDOM",
         filetype = "fastq",
-        usage = paste0("You are now ready for submission. ",
-                       "Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, ",
-                       "log in and click on `New submission`. ",
-                       "Fill in the general data for your project in steps ",
-                       "1 through 3. In step 4 ",
-                       "choose `Genome, metagenome or marker sequences ",
-                       "(MIxS compliant)` and `Environmental/Metagenome ",
-                       "Genomic Sequences MIMS`. In step 5 and 6 ",
-                       "upload the respective files in %s. In step 7 you ",
-                       "can directly upload the `*.tar.gz` submission ",
-                       "package. Just click on `continue` another time to ",
-                       "have the archive unpacked as indicated.")
+        usage = usage_mx
     )
 )
 

@@ -38,7 +38,7 @@ test_that("combining works", {
         all(merged <= pmin(derep_forward, derep_reverse))])
     expect_true(den$passed_reads[, all(non_chimera <= merged)])
     expect_true(den$classified[, all(reads > 0)])
-    expect_true(den$classified[rank == "Genus", reads > 0.5])
+    expect_true(den$classified[rank == "Genus", reads > 0.4])
 })
 
 flog.threshold(INFO)

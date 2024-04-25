@@ -78,7 +78,7 @@ from `denoised$taxonomy`:
 denoised$taxonomy[1, , drop = FALSE]
 ```
 
-To see all steps run to obatin that output you can check the provenance:
+To see all steps run to obtain that output you can check the provenance:
 
 ```{r}
 denoised$steps
@@ -101,14 +101,14 @@ print(files)
 Rerunning the previous workflow with this file list will now give a slightly
 different output:
 
-```{r}
+```{r, eval=FALSE}
 byrun <- files %>% preprocess(config$preprocess) %>%
          denoise(config$denoise)
 ```
 
 Error profiles will now be estimated for each run individually and final tables
 will be merged at the end. This is slower than having all files in one run so
-you should always try to distribute your samples across as few sequencing runs
+you should always try to distribute your samples across as few sequencing runsps
 as possible.
 
 ## Converting to phyloseq

@@ -1,15 +1,12 @@
-pandoc: 2.7.3
-pkgdown: 1.3.0
+pandoc: 3.1.3
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   00_qa: 00_qa.html
   01_preprocessing: 01_preprocessing.html
   02_amplicon_sequencing: 02_amplicon_sequencing.html
-  03_shotgun_align: 03_shotgun_align.html
-  04_long_align: 04_long_align.html
-  05_lineage: 05_lineage.html
-  06_counting: 06_counting.html
-  07_workflow_management: 07_workflow_management.html
-  08_sra: 08_sra.html
-  09_plate_layouts: 09_plate_layouts.html
+  03_counting: 03_counting.html
+  04_sra: 04_sra.html
+  05_plate_layouts: 05_plate_layouts.html
+last_built: 2024-04-25T10:55Z
 

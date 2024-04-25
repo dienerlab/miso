@@ -23,9 +23,9 @@ config_layout <- config_builder(list(
 
 grid <- function(ncols, nrows) {
     list(
-        row = expand.grid(as.character(1:nrows), LETTERS[1:ncols])[, 2:1] %>%
+        row = expand.grid(as.character(1:ncols), LETTERS[1:nrows])[, 2:1] %>%
             apply(1, paste, collapse = "", sep = ""),
-        col = expand.grid(LETTERS[1:ncols], as.character(1:nrows)) %>%
+        col = expand.grid(LETTERS[1:nrows], as.character(1:ncols)) %>%
             apply(1, paste, collapse = "", sep = "")
     )
 }
@@ -57,11 +57,11 @@ layout <- function(manifest, ...) {
     dt <- list()
     if (is.finite(config$blank_step)) {
         for (i in seq(1, nrow(manifest), config$blank_step)) {
-            n <- min(i + config$blank_step - 1, nrow(manifest))
+            nb <- min(i + config$blank_step - 1, nrow(manifest))
             if (i == 1) {
-                dt <- append(dt, list(manifest[i:n]))
+                dt <- append(dt, list(manifest[i:nb]))
             } else {
-                dt <- append(dt, list(blank, manifest[i:n]))
+                dt <- append(dt, list(blank, manifest[i:nb]))
             }
         }
         manifest <- rbindlist(dt, fill = TRUE)
@@ -91,7 +91,7 @@ layout <- function(manifest, ...) {
             fill = layout_type,
             label = id)) +
         scale_x_discrete(drop = FALSE) +
-        geom_tile(color = "black", size = 0.5) +
+        geom_tile(color = "black", linewidth = 0.5) +
         geom_text(hjust = 0.5, vjust = 0.5) +
         facet_wrap(~ plate, scales = "free",
                    labeller = function(x) label_both(x, sep = " "),

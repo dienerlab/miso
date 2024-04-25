@@ -6,31 +6,25 @@
 
 
 `miso`, short for **mi**crobiome **so**ftware is a collection of helpers that we use to analyze microbiome
-data. It makes it easier to run some common analyses and is pretty
-opinionated towards our own experiences.
+data. It makes it easier to run some common analyses and is pretty opinionated towards our own experiences.
 
 <br><br>
 
 ## General philosophy
 
 `miso` is simply a one stop location for smaller analysis helper and visualizations we
-often use in the lab. It is supposed to remove some common pain points we encountered.
+often use in the lab. It is supposed to remove some common pain points we encountered or
+to implement custom (mostly genomic) analysis steps.
 
-## Data types
+At this point complex workflows in the lab have been ported to nextflow and are no longer
+included here. See our [pipelines](https://github.com/dienerlab/pipelines) for this.
 
-`miso` mostly works on the following data types:
+## Analysis
 
-1. artifacts - compound data objects returned from an analysis step
-2. phyloseq object - a [phyloseq](https://joey711.github.io/phyloseq/) object containing sequence variant abundances,
-   taxonomy assignments and sample metadata
-3. data tables - general data frame-like objects in [tidy format](https://r4ds.had.co.nz/tidy-data.html)
-
-## Workflow steps
-
-For `misos` a workflow step is based on input data and a configuration,
+For `misos` an analysis step is based on input data and a configuration,
 thus having the function signature `step(object, config)`.
-Most steps can be chained with the pipe operator to yield workflows.
-For instance, the following is a possible workflow with `miso`:
+Most steps can be chained with the pipe operator.
+For instance, the following is possible with `miso`:
 
 ```r
 library(miso)
@@ -85,4 +79,4 @@ output <- find_read_files("raw") %>%
 All other functions are usually functions that are meant to be inside
 more complex code or functions that produce plots and endpoints of
 an analysis. Most of them act on phyloseq objects and some on tidy data
-tables.
+tables. Some are general lab helpers, for instance to make plate layouts.

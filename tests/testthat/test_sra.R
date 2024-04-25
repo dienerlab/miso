@@ -29,6 +29,21 @@ test_that("sra bundling works", {
     expect_true(file.exists(sra$upload[[1]]))
 })
 
+test_that("skin preset works", {
+    expect_error(sra_submission(fi))
+
+    sra <- sra_submission(fi, out_dir = out, title = "Sequencing of X: XYZ",
+                          preset = "human skin metagenome",
+                          platform = "OXFORD_NANOPORE",
+                          instrument_model = "MinION",
+                          metadata = data.table(id = fi$id, lane = fi$lane,
+                                                date = "2024-01-01"))
+
+    expect_named(sra, c("files", "biosample_attributes", "sra_metadata",
+                        "upload"))
+    expect_true(file.exists(sra$upload[[1]]))
+})
+
 test_that("large sra submissions work", {
     s <- paste0("S", 1:3000)
     fi <- data.table(

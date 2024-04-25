@@ -1,0 +1,4 @@
+sample_name	library_ID	filename	title	library_strategy	library_source	library_selection	filetype	library_layout	platform	instrument_model	design_description	filename2
+even1	even1	even1_S1_L001_R1_001.fasta.gz	Sequencing of the gut metagenome: the effect of age on Bacteroides	WGS	METAGENOMIC	RANDOM	fastq	paired	ILLUMINA	Illumina MiSeq	see manuscript for methods	even1_S1_L001_R2_001.fasta.gz
+even2	even2	even2_S2_L001_R1_001.fasta.gz	Sequencing of the gut metagenome: the effect of age on Bacteroides	WGS	METAGENOMIC	RANDOM	fastq	paired	ILLUMINA	Illumina MiSeq	see manuscript for methods	even2_S2_L001_R2_001.fasta.gz
+even3	even3	even3_S3_L001_R1_001.fasta.gz	Sequencing of the gut metagenome: the effect of age on Bacteroides	WGS	METAGENOMIC	RANDOM	fastq	paired	ILLUMINA	Illumina MiSeq	see manuscript for methods	even3_S3_L001_R2_001.fasta.gz

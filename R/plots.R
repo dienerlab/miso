@@ -91,10 +91,14 @@ plot_taxa <- function(ps, level = "Phylum", show_samples = TRUE, sort = TRUE,
     counts[, taxa := factor(taxa, levels=rev(total_ord))]
     counts[, sample := factor(sample, levels=sample_ord)]
     counts[, id := as.numeric(sample)]
-    sid <- sample_data(ps) %>% rownames
-    sdata <- as(sample_data(ps), "data.frame") %>% as.data.table()
-    sdata[, "sample" := sid]
-    merged <- sdata[counts, on="sample", nomatch=0]
+    if (!is.null(ps@sam_data)) {
+        sid <- sample_data(ps) %>% rownames()
+        sdata <- as(sample_data(ps), "data.frame") %>% as.data.table()
+        sdata[, "sample" := sid]
+        merged <- sdata[counts, on="sample", nomatch=0]
+    } else {
+        merged <- counts
+    }
 
     if (only_data) return(merged)
     x <- "id"

@@ -6,19 +6,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Provides helper functions for microbiome preprocessing and analysis • miso</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
+<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Provides helper functions for microbiome preprocessing and analysis">
-<meta property="og:description" content="Provides helper functions for microbiome preprocessing and
-    analysis.">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="Provides helper functions for microbiome preprocessing and analysis.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,25 +33,19 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">miso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.40.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.50.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
-
-  </a>
-</li>
-<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-
+     
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -63,34 +59,22 @@
       <a href="articles/02_amplicon_sequencing.html">2 - Amplicon sequencing analysis</a>
     </li>
     <li>
-      <a href="articles/03_shotgun_align.html">3 - Shotgun data - alignments</a>
+      <a href="articles/03_counting.html">3 - Reference counting</a>
     </li>
     <li>
-      <a href="articles/04_long_align.html">4 - Long read data - alignments</a>
+      <a href="articles/04_sra.html">4 - Submitting data to SRA</a>
     </li>
     <li>
-      <a href="articles/05_lineage.html">5 - Lineage calling with SLIMM</a>
-    </li>
-    <li>
-      <a href="articles/06_counting.html">6 - Reference counting</a>
-    </li>
-    <li>
-      <a href="articles/07_workflow_management.html">7 - Workflow management</a>
-    </li>
-    <li>
-      <a href="articles/08_sra.html">8 - Submitting data to SRA</a>
-    </li>
-    <li>
-      <a href="articles/09_plate_layouts.html">9 - Plate Layouts</a>
+      <a href="articles/05_plate_layouts.html">5 - Plate Layouts</a>
     </li>
   </ul>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Gibbons-Lab/miso">
-    <span class="fa fa-github fa-lg"></span>
-
+  <a href="https://github.com/dienerlab/miso/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
+     
   </a>
 </li>
       </ul>
@@ -101,46 +85,39 @@
 </div>
 <!--/.navbar -->
 
+      
 
       </header><div class="row">
   <div class="contents col-md-9">
 
-<p><img src="https://github.com/Gibbons-Lab/miso/raw/master/inst/extdata/logo.png" width="25%" align="right"></p>
-<p><a href="https://travis-ci.org/Gibbons-Lab/miso"><img src="https://travis-ci.org/Gibbons-Lab/miso.svg?branch=master" alt="Build Status"></a> <a href="https://codecov.io/gh/Gibbons-Lab/miso"><img src="https://codecov.io/gh/Gibbons-Lab/miso/branch/master/graph/badge.svg" alt="codecov"></a></p>
-<p><code>miso</code> is a collection of helpers that we use to analyze microbiome data. It makes it easier to run some common analyses and is pretty opinionated towards our own experiences.</p>
-<div id="general-philosophy" class="section level2">
-<h2 class="hasAnchor">
-<a href="#general-philosophy" class="anchor"></a>General philosophy</h2>
-<p><code>miso</code> sees analyses as a workflow consisting of several analysis steps and final outputs based on those. This is pretty similar to Qiime 2 and most of the functionality in <code>miso</code> is supposed to be orthogonal and not in competition to those other excellent tools.</p>
+<p><img src="https://github.com/dienerlab/miso/raw/main/inst/extdata/logo.png" width="25%" align="right"></p>
+<p><img src="https://github.com/dienerlab/miso/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"><a href="https://codecov.io/gh/dienerlab/miso" class="external-link"><img src="https://codecov.io/gh/dienerlab/miso/branch/main/graph/badge.svg" alt="codecov"></a></p>
+<p><code>miso</code>, short for <strong>mi</strong>crobiome <strong>so</strong>ftware is a collection of helpers that we use to analyze microbiome data. It makes it easier to run some common analyses and is pretty opinionated towards our own experiences.</p>
+<p><br><br></p>
+<div class="section level2">
+<h2 id="general-philosophy">General philosophy<a class="anchor" aria-label="anchor" href="#general-philosophy"></a>
+</h2>
+<p><code>miso</code> is simply a one stop location for smaller analysis helper and visualizations we often use in the lab. It is supposed to remove some common pain points we encountered or to implement custom (mostly genomic) analysis steps.</p>
+<p>At this point complex workflows in the lab have been ported to nextflow and are no longer included here. See our <a href="https://github.com/dienerlab/pipelines" class="external-link">pipelines</a> for this.</p>
 </div>
-<div id="data-types" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-types" class="anchor"></a>Data types</h2>
-<p><code>miso</code> mostly works on the following data types:</p>
-<ol>
-<li>artifacts - compound data objects returned from an analysis step</li>
-<li>phyloseq object - a <a href="https://joey711.github.io/phyloseq/">phyloseq</a> object containing sequence variant abundances, taxonomy assignments and sample metadata</li>
-<li>data tables - general data frame-like objects in <a href="https://r4ds.had.co.nz/tidy-data.html">tidy format</a>
-</li>
-</ol>
-</div>
-<div id="workflow-steps" class="section level2">
-<h2 class="hasAnchor">
-<a href="#workflow-steps" class="anchor"></a>Workflow steps</h2>
-<p>For <code>miso</code> a workflow step is based on input data and a configuration, thus having the function signature <code><a href="https://www.rdocumentation.org/packages/stats/topics/step">step(object, config)</a></code>. Most steps can be chained with the pipe operator to yield workflows. For instance, the following is a possible workflow with <code>miso</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(miso)</span>
-<span id="cb1-2"><a href="#cb1-2"></a></span>
-<span id="cb1-3"><a href="#cb1-3"></a>config &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</span>
-<span id="cb1-4"><a href="#cb1-4"></a>    <span class="dt">demultiplex =</span> <span class="kw"><a href="reference/config_demultiplex.html">config_demultiplex</a></span>(<span class="dt">barcodes =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"ACGTA"</span>, <span class="st">"AGCTT"</span>)),</span>
-<span id="cb1-5"><a href="#cb1-5"></a>    <span class="dt">preprocess =</span> <span class="kw"><a href="reference/config_preprocess.html">config_preprocess</a></span>(<span class="dt">truncLen =</span> <span class="dv">200</span>),</span>
-<span id="cb1-6"><a href="#cb1-6"></a>    <span class="dt">denoise =</span> <span class="kw"><a href="reference/config_denoise.html">config_denoise</a></span>()</span>
-<span id="cb1-7"><a href="#cb1-7"></a>)</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a>output &lt;-<span class="st"> </span><span class="kw"><a href="reference/find_read_files.html">find_read_files</a></span>(<span class="st">"raw"</span>) <span class="op">%&gt;%</span></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="st">          </span><span class="kw"><a href="reference/demultiplex.html">demultiplex</a></span>(config<span class="op">$</span>demultiplex) <span class="op">%&gt;%</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="st">          </span><span class="kw"><a href="reference/quality_control.html">quality_control</a></span>() <span class="op">%&gt;%</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="st">          </span><span class="kw"><a href="reference/preprocess.html">preprocess</a></span>(config<span class="op">$</span>preprocess) <span class="op">%&gt;%</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="st">          </span><span class="kw"><a href="reference/denoise.html">denoise</a></span>(config<span class="op">$</span>denoise)</span></code></pre></div>
+<div class="section level2">
+<h2 id="analysis">Analysis<a class="anchor" aria-label="anchor" href="#analysis"></a>
+</h2>
+<p>For <code>misos</code> an analysis step is based on input data and a configuration, thus having the function signature <code>step(object, config)</code>. Most steps can be chained with the pipe operator. For instance, the following is possible with <code>miso</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dienerlab/miso" class="external-link">miso</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">config</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    demultiplex <span class="op">=</span> <span class="fu"><a href="reference/config_demultiplex.html">config_demultiplex</a></span><span class="op">(</span>barcodes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ACGTA"</span>, <span class="st">"AGCTT"</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    preprocess <span class="op">=</span> <span class="fu"><a href="reference/config_preprocess.html">config_preprocess</a></span><span class="op">(</span>truncLen <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>,</span>
+<span>    denoise <span class="op">=</span> <span class="fu"><a href="reference/config_denoise.html">config_denoise</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/find_read_files.html">find_read_files</a></span><span class="op">(</span><span class="st">"raw"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>          <span class="fu"><a href="reference/demultiplex.html">demultiplex</a></span><span class="op">(</span><span class="va">config</span><span class="op">$</span><span class="va">demultiplex</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>          <span class="fu"><a href="reference/quality_control.html">quality_control</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>          <span class="fu"><a href="reference/preprocess.html">preprocess</a></span><span class="op">(</span><span class="va">config</span><span class="op">$</span><span class="va">preprocess</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>          <span class="fu"><a href="reference/denoise.html">denoise</a></span><span class="op">(</span><span class="va">config</span><span class="op">$</span><span class="va">denoise</span><span class="op">)</span></span></code></pre></div>
 <p>This clearly logs the used workflow and the configuration. The configuration can also be saved and read in many formats, for instance yaml.</p>
 <p>config.yaml:</p>
 <pre><code>preprocess:
@@ -158,59 +135,76 @@ denoise:
   species_db: https://zenodo.org/record/1172783/files/silva_species_assignment_v132.fa.gz?download=1
   hash: yes</code></pre>
 <p>This can now be reused by someone else:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>config &lt;-<span class="st"> </span><span class="kw">read_yaml</span>(<span class="st">"config.yml"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a></span>
-<span id="cb3-3"><a href="#cb3-3"></a>output &lt;-<span class="st"> </span><span class="kw"><a href="reference/find_read_files.html">find_read_files</a></span>(<span class="st">"raw"</span>) <span class="op">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="st">          </span><span class="kw"><a href="reference/quality_control.html">quality_control</a></span>() <span class="op">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="st">          </span><span class="kw"><a href="reference/preprocess.html">preprocess</a></span>(config<span class="op">$</span>preprocess) <span class="op">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="st">          </span><span class="kw"><a href="reference/denoise.html">denoise</a></span>(config<span class="op">$</span>denoise)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">config</span> <span class="op">&lt;-</span> <span class="fu">read_yaml</span><span class="op">(</span><span class="st">"config.yml"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/find_read_files.html">find_read_files</a></span><span class="op">(</span><span class="st">"raw"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>          <span class="fu"><a href="reference/quality_control.html">quality_control</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>          <span class="fu"><a href="reference/preprocess.html">preprocess</a></span><span class="op">(</span><span class="va">config</span><span class="op">$</span><span class="va">preprocess</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>          <span class="fu"><a href="reference/denoise.html">denoise</a></span><span class="op">(</span><span class="va">config</span><span class="op">$</span><span class="va">denoise</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="other-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-functions" class="anchor"></a>Other functions</h2>
-<p>All other functions are usually functions that are meant to be inside more complex code or functions that produce plots and endpoints of an analysis. Most of them act on phyloseq objects and some on tidy data tables.</p>
+<div class="section level2">
+<h2 id="other-functions">Other functions<a class="anchor" aria-label="anchor" href="#other-functions"></a>
+</h2>
+<p>All other functions are usually functions that are meant to be inside more complex code or functions that produce plots and endpoints of an analysis. Most of them act on phyloseq objects and some on tidy data tables. Some are general lab helpers, for instance to make plate layouts.</p>
 </div>
 
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/Gibbons-Lab/miso">https://​github.com/​Gibbons-Lab/​miso</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/Gibbons-Lab/miso/issues">https://​github.com/​Gibbons-Lab/​miso/​issues</a>
-</li>
+<li><a href="https://github.com/dienerlab/miso/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/dienerlab/miso/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li>Apache License (== 2.0)</li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Christian Diener <br><small class="roles"> Author, maintainer </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html#citation">Citing miso</a></li>
 </ul>
 </div>
+
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
+<ul class="list-unstyled">
+<li>Christian Diener <br><small class="roles"> Author, maintainer </small>  </li>
+</ul>
+</div>
+
+
 
   </div>
 </div>
 
+
       <footer><div class="copyright">
-  <p>Developed by Christian Diener.</p>
+  <p></p>
+<p>Developed by Christian Diener.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
+
       </footer>
 </div>
 
+  
 
+
+  
 
   </body>
 </html>

@@ -11,12 +11,10 @@ test_that("configuration is good", {
     expect_equal(config$method, "naive")
 })
 
-fi <- system.file("extdata/shotgun", package = "miso") %>%
-      find_read_files()
+alns <- system.file("extdata/aln", package = "miso") %>%
+      find_alignments()
 ref <- system.file("extdata/genomes/zymo_mock.fna.gz",
                    package = "miso")
-alns <- align_short_reads(fi, alignment_dir = file.path(tempdir(), "aln"),
-                              reference = ref)
 
 test_that("EM counting works", {
     cn <- count_references(alns, reference = ref)

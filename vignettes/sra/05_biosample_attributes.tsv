@@ -1,0 +1,4 @@
+sample_name	organism	collection_date	env_broad_scale	env_local_scale	env_medium	host	geo_loc_name	lat_lon	source_material_id	diet	age
+even1	human gut metagenome	2019-01-01	environment associated with an animal part or small animal [ENVO:01001055]	intestine environment [ENVO:2100002]	fecal material [ENVO:00002003]	Homo sapiens	USA	42.36 N 71.0941 W	even1	vegan	23
+even2	human gut metagenome	2019-01-01	environment associated with an animal part or small animal [ENVO:01001055]	intestine environment [ENVO:2100002]	fecal material [ENVO:00002003]	Homo sapiens	USA	42.36 N 71.0941 W	even2	vegetarian	38
+even3	human gut metagenome	2019-01-01	environment associated with an animal part or small animal [ENVO:01001055]	intestine environment [ENVO:2100002]	fecal material [ENVO:00002003]	Homo sapiens	USA	42.36 N 71.0941 W	even3	flexitarian	64

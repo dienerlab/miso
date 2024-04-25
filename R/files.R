@@ -1,30 +1,44 @@
 # Helpers to manage read files
 
+#' Presets for read file formats.
+#'
+#' A format is a simple list with an entry "pattern" specifying the regex for a
+#' a file including match groups, and an entry "annotations" specifying what the
+#' matched group means. Should include "id" and "direction".
+#'
+#'
 #' @export
-illumina_pattern <-
-    "([A-Za-z0-9\\-\\.]+)_S(\\d+)(?:_trimmed)*(?:_L(\\d+))*_R(\\d+)_001.f"
-#' @export
-illumina_annotations <- c("id", "injection_order", "lane", "direction")
-#' @export
-sra_pattern <- "([A-Za-z0-9\\-]+)_(\\d).fastq"
-#' @export
-sra_annotations <- c("id", "direction")
-#' @export
-simple_pattern <- "([A-Za-z0-9_\\-\\.]+)\\.f"
-#' @export
-simple_annotations <- c("id")
+file_formats <- list(
+    illumina = list(
+        pattern =
+            "([A-Za-z0-9\\-\\.]+)_S(\\d+)(?:_trimmed)*(?:_L(\\d+))*_R(\\d+)_001.f",
+        annotations = c("id", "injection_order", "lane", "direction")
+    ),
+    sra = list(
+        pattern = "([A-Za-z0-9\\-]+)_(\\d).fastq",
+        annotations = c("id", "direction")
+    ),
+    simple = list(
+        pattern = "([A-Za-z0-9_\\-\\.]+)\\.f",
+        annotations = c("id")
+    ),
+    alignment = list(
+        pattern = "([A-Za-z0-9_\\-\\.]+)\\.bam",
+        annotations = c("id")
+    )
+)
 
-annotate_files <- function(dir, pattern, annotations) {
-    if (!"id" %in% annotations) {
+annotate_files <- function(dir, format) {
+    if (!"id" %in% format$annotations) {
         stop("need at least the id for each sample")
     }
     files <- list.files(dir, recursive = TRUE, include.dirs = TRUE)
-    match <- str_match(files, pattern)
+    match <- str_match(files, format$pattern)
     files <- files[!is.na(match[, 1])]
     match <- match[!is.na(match[, 1]), ]
     anns <- as.data.table(match)
-    names(anns) <- c("file", annotations)
-    if ("direction" %in% annotations) {
+    names(anns) <- c("file", format$annotations)
+    if ("direction" %in% format$annotations) {
         anns[, direction := as.numeric(direction)]
     } else {
         anns[, direction := 1]
@@ -98,15 +112,13 @@ get_alignments <- function(obj) {
 #' @importFrom data.table setDT uniqueN
 #' @importFrom utils capture.output
 find_read_files <- function(directory,
-                            pattern = illumina_pattern,
-                            annotations = illumina_annotations,
+                            format = file_formats$illumina,
                             dirs_are_runs = FALSE) {
     subdirs <- list.dirs(directory, recursive = FALSE, full.names = FALSE)
     if (dirs_are_runs && (length(subdirs) > 0)) {
         files <- list()
         for (dir in subdirs) {
-            fi <- annotate_files(file.path(directory, dir), pattern,
-                                 annotations)
+            fi <- annotate_files(file.path(directory, dir), format)
             fi[, "run" := dir]
             fi[, forward := file.path(dir, forward)]
             if ("reverse" %in% names(fi)) {
@@ -116,7 +128,7 @@ find_read_files <- function(directory,
         }
         files <- rbindlist(files)
     } else {
-        files <- annotate_files(directory, pattern, annotations)
+        files <- annotate_files(directory, format)
     }
     files[, forward :=
         ifelse(is.na(forward), NA, file.path(directory, forward))]
@@ -130,12 +142,33 @@ find_read_files <- function(directory,
                          "advancing to other workflow steps. Duplicated: %s"),
                   paste(names(tab)[tab > 1], collapse = ", "))
     }
-    missing <- files[is.na(forward) | is.na(reverse)]
+
+    missing <- files[is.na(forward)]
+    if ("reverse" %in% names(files)) {
+        missing <- files[is.na(forward) | is.na(reverse)]
+    }
     if (nrow(missing) > 0) {
         flog.warn(
             "The following samples have missing read files: %s",
             capture.output(missing)
         )
     }
+    return(files)
+}
+
+#' Find alignment BAM files in a given directory.
+#'
+#' @param directory The directory in which to look.
+#' @param dirs_are_runs Whether subdirctories indicate different sequencing
+#'  runs.
+#' @return A data table that contains the alignments.
+#'
+#' @export
+#' @importFrom stringr str_match_all
+#' @importFrom data.table setDT uniqueN setnames
+#' @importFrom utils capture.output
+find_alignments <- function(directory, dirs_are_runs = FALSE) {
+    files <- find_read_files(directory, file_formats$alignment, dirs_are_runs)
+    setnames(files, "forward", "alignment")
     return(files)
 }

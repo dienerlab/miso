@@ -26,16 +26,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y git bzip2 \
             cmake autoconf automake make gcc perl zlib1g-dev libbz2-dev \
-            liblzma-dev samtools
-
-      - name: "Install aligners and SLIMM"
-        run: |
-          rm -rf vignettes
-          curl -L https://github.com/lh3/minimap2/releases/download/v2.13/minimap2-2.13_x64-linux.tar.bz2 | tar -jxf -
-          sudo cp ./minimap2-2.13_x64-linux/minimap2 /usr/bin/ && rm -rf ./minimap2-*
-          git clone --recursive https://github.com/seqan/slimm
-          (cd slimm && mkdir build && cd build && cmake .. && make && sudo cp bin/slimm /usr/bin/)
-          rm -rf slimm
+            liblzma-dev samtools minimap2
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:

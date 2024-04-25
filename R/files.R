@@ -101,10 +101,7 @@ get_alignments <- function(obj) {
 #' @param directory The directory in which to look.
 #' @param dirs_are_runs Whether subdirctories indicate different sequencing
 #'  runs.
-#' @param pattern Regular expression pattern for the file names. Each capture
-#'  group will be used as an annotation.
-#' @param annotations Names for the annotations. Must contain one name for each
-#'  capture group in `pattern`.
+#' @param format The file naming format to look for. Defaults to Illumina.
 #' @return A data table that contains the samples and their annotations.
 #'
 #' @export

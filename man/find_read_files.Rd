@@ -13,14 +13,10 @@ find_read_files(
 \arguments{
 \item{directory}{The directory in which to look.}
 
+\item{format}{The file naming format to look for. Defaults to Illumina.}
+
 \item{dirs_are_runs}{Whether subdirctories indicate different sequencing
 runs.}
-
-\item{pattern}{Regular expression pattern for the file names. Each capture
-group will be used as an annotation.}
-
-\item{annotations}{Names for the annotations. Must contain one name for each
-capture group in `pattern`.}
 }
 \value{
 A data table that contains the samples and their annotations.

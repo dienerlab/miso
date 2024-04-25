@@ -18,5 +18,5 @@ A list with the parameters used in the long read alignment
 This can be saved and passed on to others to ensure reproducibility.
 }
 \examples{
- config <- config_align(reference = "refs/mouse.fna.gz")
+ config <- config_layout(blank_step = 10)
 }

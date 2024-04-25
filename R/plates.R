@@ -10,7 +10,7 @@
 #'  workflow.
 #' @export
 #' @examples
-#'  config <- config_align(reference = "refs/mouse.fna.gz")
+#'  config <- config_layout(blank_step = 10)
 config_layout <- config_builder(list(
     idcol = "id",
     blank_step = 18,

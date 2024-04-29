@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.50.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.51.2</span>
       </span>
     </div>
 
@@ -140,14 +140,14 @@ data:</p>
 data.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">quals</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/find_read_files.html">find_read_files</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/quality_control.html">quality_control</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## INFO [2024-04-25 12:55:47] Running quality assay for forward reads from 5 files.</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:50] Median per base error is 0.016% (median score = 38.00).</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:50] Mean per cycle entropy is 0.808 (in [0, 2]).</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:50] On average we have 8963.80 +- 6059.73 reads per file.</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:50] Running quality assay for reverse reads from 5 files.</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:51] Median per base error is 0.020% (median score = 37.00).</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:51] Mean per cycle entropy is 0.731 (in [0, 2]).</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:51] On average we have 8963.80 +- 6059.73 reads per file.</span></span></code></pre>
+<pre><code><span><span class="co">## INFO [2024-04-29 09:38:53] Running quality assay for forward reads from 5 files.</span></span>
+<span><span class="co">## INFO [2024-04-29 09:38:56] Median per base error is 0.016% (median score = 38.00).</span></span>
+<span><span class="co">## INFO [2024-04-29 09:38:56] Mean per cycle entropy is 0.808 (in [0, 2]).</span></span>
+<span><span class="co">## INFO [2024-04-29 09:38:56] On average we have 8963.80 +- 6059.73 reads per file.</span></span>
+<span><span class="co">## INFO [2024-04-29 09:38:56] Running quality assay for reverse reads from 5 files.</span></span>
+<span><span class="co">## INFO [2024-04-29 09:38:57] Median per base error is 0.020% (median score = 37.00).</span></span>
+<span><span class="co">## INFO [2024-04-29 09:38:57] Mean per cycle entropy is 0.731 (in [0, 2]).</span></span>
+<span><span class="co">## INFO [2024-04-29 09:38:57] On average we have 8963.80 +- 6059.73 reads per file.</span></span></code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">quals</span><span class="op">$</span><span class="va">quality_plot</span></span></code></pre></div>
 <p><img src="02_amplicon_sequencing_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
@@ -175,20 +175,20 @@ on top.</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">denoised</span> <span class="op">&lt;-</span> <span class="va">quals</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/preprocess.html">preprocess</a></span><span class="op">(</span><span class="va">config</span><span class="op">$</span><span class="va">preprocess</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/denoise.html">denoise</a></span><span class="op">(</span><span class="va">config</span><span class="op">$</span><span class="va">denoise</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## INFO [2024-04-25 12:55:52] Preprocessing reads for 5 paired-end samples...</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:58] 3.23e+04/4.48e+04 (73.36%) reads passed preprocessing.</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:58] Running DADA2 on 1 run(s) from a sample of up to 2.5e+08 bases.</span></span>
-<span><span class="co">## INFO [2024-04-25 12:55:58] Learning errors for run `all` (5 samples)...</span></span>
-<span><span class="co">## INFO [2024-04-25 12:56:53] Dereplicating run `all` (5 samples)...</span></span>
-<span><span class="co">## INFO [2024-04-25 12:56:54] Inferring sequence variants for run `all`...</span></span>
-<span><span class="co">## INFO [2024-04-25 12:57:08] Found 164 sequence variants in run `all`...</span></span>
-<span><span class="co">## INFO [2024-04-25 12:57:08] Removed 5/164 sequence variants as chimeric from run all (1.21% of reads)</span></span>
-<span><span class="co">## INFO [2024-04-25 12:57:08] Finished run `all`.</span></span>
-<span><span class="co">## INFO [2024-04-25 12:57:08] Merged sequence tables. Found a total of 159 ASVs. Assigning taxonomy...</span></span>
-<span><span class="co">## INFO [2024-04-25 12:57:08] Downloading taxa db to /tmp/Rtmp959rH9/taxa.fna.gz...</span></span>
-<span><span class="co">## INFO [2024-04-25 12:59:43] Downloading species db to /tmp/Rtmp959rH9/species.fna.gz...</span></span>
-<span><span class="co">## INFO [2024-04-25 13:00:13] Reads with taxonomic classification: Kingdom=100%, Phylum=100%, Class=100%, Order=100%, Family=96.4%, Genus=53.6%, Species=18.8%, Species=18.8%</span></span>
-<span><span class="co">## INFO [2024-04-25 13:00:13] Hashing 159 sequence variants.</span></span></code></pre>
+<pre><code><span><span class="co">## INFO [2024-04-29 09:38:58] Preprocessing reads for 5 paired-end samples...</span></span>
+<span><span class="co">## INFO [2024-04-29 09:39:04] 3.23e+04/4.48e+04 (73.36%) reads passed preprocessing.</span></span>
+<span><span class="co">## INFO [2024-04-29 09:39:04] Running DADA2 on 1 run(s) from a sample of up to 2.5e+08 bases.</span></span>
+<span><span class="co">## INFO [2024-04-29 09:39:04] Learning errors for run `all` (5 samples)...</span></span>
+<span><span class="co">## INFO [2024-04-29 09:39:56] Dereplicating run `all` (5 samples)...</span></span>
+<span><span class="co">## INFO [2024-04-29 09:39:57] Inferring sequence variants for run `all`...</span></span>
+<span><span class="co">## INFO [2024-04-29 09:40:11] Found 164 sequence variants in run `all`...</span></span>
+<span><span class="co">## INFO [2024-04-29 09:40:11] Removed 5/164 sequence variants as chimeric from run all (1.21% of reads)</span></span>
+<span><span class="co">## INFO [2024-04-29 09:40:11] Finished run `all`.</span></span>
+<span><span class="co">## INFO [2024-04-29 09:40:11] Merged sequence tables. Found a total of 159 ASVs. Assigning taxonomy...</span></span>
+<span><span class="co">## INFO [2024-04-29 09:40:11] Downloading taxa db to /tmp/RtmprJiJxe/taxa.fna.gz...</span></span>
+<span><span class="co">## INFO [2024-04-29 09:43:04] Downloading species db to /tmp/RtmprJiJxe/species.fna.gz...</span></span>
+<span><span class="co">## INFO [2024-04-29 09:43:47] Reads with taxonomic classification: Kingdom=100%, Phylum=100%, Class=100%, Order=100%, Family=96.4%, Genus=53.6%, Species=18.8%, Species=18.8%</span></span>
+<span><span class="co">## INFO [2024-04-29 09:43:47] Hashing 159 sequence variants.</span></span></code></pre>
 <p>This will run both workflow steps sequentially and will use all
 available CPUs by default. You will get some disgnostic output on the
 logging interface but you can also inspect those in the returned
@@ -248,20 +248,20 @@ have to specify the run by hand. We will do so for our files here:</p>
 <span><span class="va">files</span><span class="op">[</span>, <span class="va">run</span> <span class="op">:=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">files</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## Key: &lt;id&gt;</span></span>
-<span><span class="co">##                                                                                       forward</span></span>
-<span><span class="co">##                                                                                        &lt;char&gt;</span></span>
-<span><span class="co">## 1: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/F3D0_S188_L001_R1_001.fastq.gz</span></span>
-<span><span class="co">## 2: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/F3D1_S189_L001_R1_001.fastq.gz</span></span>
-<span><span class="co">## 3: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/F3D2_S190_L001_R1_001.fastq.gz</span></span>
-<span><span class="co">## 4: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/F3D3_S191_L001_R1_001.fastq.gz</span></span>
-<span><span class="co">## 5: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/Mock_S280_L001_R1_001.fastq.gz</span></span>
-<span><span class="co">##                                                                                       reverse</span></span>
-<span><span class="co">##                                                                                        &lt;char&gt;</span></span>
-<span><span class="co">## 1: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/F3D0_S188_L001_R2_001.fastq.gz</span></span>
-<span><span class="co">## 2: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/F3D1_S189_L001_R2_001.fastq.gz</span></span>
-<span><span class="co">## 3: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/F3D2_S190_L001_R2_001.fastq.gz</span></span>
-<span><span class="co">## 4: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/F3D3_S191_L001_R2_001.fastq.gz</span></span>
-<span><span class="co">## 5: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/16S/Mock_S280_L001_R2_001.fastq.gz</span></span>
+<span><span class="co">##                                                                                      forward</span></span>
+<span><span class="co">##                                                                                       &lt;char&gt;</span></span>
+<span><span class="co">## 1: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/F3D0_S188_L001_R1_001.fastq.gz</span></span>
+<span><span class="co">## 2: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/F3D1_S189_L001_R1_001.fastq.gz</span></span>
+<span><span class="co">## 3: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/F3D2_S190_L001_R1_001.fastq.gz</span></span>
+<span><span class="co">## 4: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/F3D3_S191_L001_R1_001.fastq.gz</span></span>
+<span><span class="co">## 5: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/Mock_S280_L001_R1_001.fastq.gz</span></span>
+<span><span class="co">##                                                                                      reverse</span></span>
+<span><span class="co">##                                                                                       &lt;char&gt;</span></span>
+<span><span class="co">## 1: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/F3D0_S188_L001_R2_001.fastq.gz</span></span>
+<span><span class="co">## 2: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/F3D1_S189_L001_R2_001.fastq.gz</span></span>
+<span><span class="co">## 3: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/F3D2_S190_L001_R2_001.fastq.gz</span></span>
+<span><span class="co">## 4: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/F3D3_S191_L001_R2_001.fastq.gz</span></span>
+<span><span class="co">## 5: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/16S/Mock_S280_L001_R2_001.fastq.gz</span></span>
 <span><span class="co">##        id injection_order  lane   run</span></span>
 <span><span class="co">##    &lt;char&gt;           &lt;num&gt; &lt;num&gt; &lt;int&gt;</span></span>
 <span><span class="co">## 1:   F3D0             188     1     1</span></span>

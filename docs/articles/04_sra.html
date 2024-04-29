@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">miso</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.50.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.51.2</span>
       </span>
     </div>
 
@@ -140,16 +140,16 @@ our example data:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fi</span></span></code></pre></div>
 <pre><code><span><span class="co">## Key: &lt;id&gt;</span></span>
-<span><span class="co">##                                                                                          forward</span></span>
-<span><span class="co">##                                                                                           &lt;char&gt;</span></span>
-<span><span class="co">## 1: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/shotgun/even1_S1_L001_R1_001.fasta.gz</span></span>
-<span><span class="co">## 2: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/shotgun/even2_S2_L001_R1_001.fasta.gz</span></span>
-<span><span class="co">## 3: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/shotgun/even3_S3_L001_R1_001.fasta.gz</span></span>
-<span><span class="co">##                                                                                          reverse</span></span>
-<span><span class="co">##                                                                                           &lt;char&gt;</span></span>
-<span><span class="co">## 1: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/shotgun/even1_S1_L001_R2_001.fasta.gz</span></span>
-<span><span class="co">## 2: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/shotgun/even2_S2_L001_R2_001.fasta.gz</span></span>
-<span><span class="co">## 3: /tmp/Rtmp0LsDXk/temp_libpath20758c3f036fbb/miso/extdata/shotgun/even3_S3_L001_R2_001.fasta.gz</span></span>
+<span><span class="co">##                                                                                         forward</span></span>
+<span><span class="co">##                                                                                          &lt;char&gt;</span></span>
+<span><span class="co">## 1: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/shotgun/even1_S1_L001_R1_001.fasta.gz</span></span>
+<span><span class="co">## 2: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/shotgun/even2_S2_L001_R1_001.fasta.gz</span></span>
+<span><span class="co">## 3: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/shotgun/even3_S3_L001_R1_001.fasta.gz</span></span>
+<span><span class="co">##                                                                                         reverse</span></span>
+<span><span class="co">##                                                                                          &lt;char&gt;</span></span>
+<span><span class="co">## 1: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/shotgun/even1_S1_L001_R2_001.fasta.gz</span></span>
+<span><span class="co">## 2: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/shotgun/even2_S2_L001_R2_001.fasta.gz</span></span>
+<span><span class="co">## 3: /tmp/RtmpFnpEcH/temp_libpath39b6c5ce98287/miso/extdata/shotgun/even3_S3_L001_R2_001.fasta.gz</span></span>
 <span><span class="co">##        id injection_order  lane</span></span>
 <span><span class="co">##    &lt;char&gt;           &lt;num&gt; &lt;num&gt;</span></span>
 <span><span class="co">## 1:  even1               1     1</span></span>
@@ -221,10 +221,11 @@ a BIOPROJECT ID) variable everything else needs to be specified (or the
 default values will be used). You can check the the list of available
 presets with:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu">miso</span><span class="fu">:::</span><span class="va">presets</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] "human gut 16S"         "mouse gut 16S"         "human gut metagenome" </span></span>
-<span><span class="co">## [4] "human skin metagenome" "mouse gut metagenome"  "human gut RNA-Seq"    </span></span>
-<span><span class="co">## [7] "mouse gut RNA-Seq"     "aquatic biofilm 16S"   "in vitro metagenome"</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">sra_presets</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##  [1] "human gut 16S"         "mouse gut 16S"         "human gut metagenome" </span></span>
+<span><span class="co">##  [4] "human skin 16S"        "human skin metagenome" "mouse gut metagenome" </span></span>
+<span><span class="co">##  [7] "human gut RNA-Seq"     "mouse gut RNA-Seq"     "aquatic biofilm 16S"  </span></span>
+<span><span class="co">## [10] "in vitro metagenome"</span></span></code></pre>
 <p>Let’s fill in the data for the example study:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">config</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/config_sra.html">config_sra</a></span><span class="op">(</span></span>
@@ -237,10 +238,10 @@ presets with:</p>
 <p>You can now proceed building the subsmission data:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sra</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sra_submission.html">sra_submission</a></span><span class="op">(</span><span class="va">fi</span>, <span class="va">config</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## INFO [2024-04-25 13:00:31] Packing submission files to sra/sra_files.tar.gz.</span></span>
-<span><span class="co">## INFO [2024-04-25 13:00:31] Writing biosample attributes to sra/05_biosample_attributes.tsv.</span></span>
-<span><span class="co">## INFO [2024-04-25 13:00:31] Writing file metadata to sra/06_sra_metadata.tsv.</span></span>
-<span><span class="co">## INFO [2024-04-25 13:00:31] You are now ready for submission. Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, log in and click on `New submission`. Fill in the general data for your project in steps 1 through 3. In step 4 choose `Environmental/Metagenome Genomic Sequences MIMS` with the appropriate environment. In step 5 and 6 upload the respective files in sra. In step 7 you can directly upload the `*.tar.gz` submission package. Just click on `continue` another time to have the archive unpacked as indicated.</span></span></code></pre>
+<pre><code><span><span class="co">## INFO [2024-04-29 09:44:06] Packing submission files to sra/sra_files.tar.gz.</span></span>
+<span><span class="co">## INFO [2024-04-29 09:44:06] Writing biosample attributes to sra/05_biosample_attributes.tsv.</span></span>
+<span><span class="co">## INFO [2024-04-29 09:44:06] Writing file metadata to sra/06_sra_metadata.tsv.</span></span>
+<span><span class="co">## INFO [2024-04-29 09:44:06] You are now ready for submission. Go to https://submit.ncbi.nlm.nih.gov/subs/sra/, log in and click on `New submission`. Fill in the general data for your project in steps 1 through 3. In step 4 choose `Environmental/Metagenome Genomic Sequences MIMS` with the appropriate environment. In step 5 and 6 upload the respective files in sra. In step 7 you can directly upload the `*.tar.gz` submission package. Just click on `continue` another time to have the archive unpacked as indicated.</span></span></code></pre>
 <p>This told us exactly how to submit the data. We urge you to first
 check all created files for correctness. This can be done by inspecting
 the return value. For instance:</p>

@@ -1,6 +1,6 @@
 Package: miso
 Title: Provides helper functions for microbiome preprocessing and analysis
-Version: 0.51.1
+Version: 0.51.2
 Authors@R: c(person("Christian", "Diener", email = "mail@dienerlab.com", role = c("aut", "cre")))
 Description: Provides helper functions for microbiome preprocessing and analysis.
 Depends:

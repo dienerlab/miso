@@ -105,7 +105,11 @@ usage_mx <- paste0(
     "have the archive unpacked as indicated."
 )
 
-presets <- list(
+#' The available presets for SRA submissions. They all map to MIMARKS or MIMS
+#' packages
+#'
+#' @export
+sra_presets <- list(
     `human gut 16S` = c(
         gut_envo,
         organism = "human gut metagenome",
@@ -135,6 +139,16 @@ presets <- list(
         library_selection = "RANDOM",
         filetype = "fastq",
         usage = usage_mx
+    ),
+    `human skin 16S` = c(
+        skin_envo,
+        organism = "human skin metagenome",
+        host = "Homo sapiens",
+        library_strategy = "AMPLICON",
+        library_source = "GENOMIC",
+        library_selection = "PCR",
+        filetype = "fastq",
+        usage = usage_16S
     ),
     `human skin metagenome` = c(
         skin_envo,
@@ -206,9 +220,9 @@ validate <- function(config) {
         stop(paste0("Please specify a title in the form ",
                     "`{methodology} of {organism}: {sample info}`"))
     }
-    if (!config$preset %in% names(presets)) {
+    if (!config$preset %in% names(sra_presets)) {
         stop(sprintf("Not a supported presets. Allowed are: %s",
-                     paste0(names(presets), collapse = ",")))
+                     paste0(names(sra_presets), collapse = ", ")))
     }
     if (!toupper(config$platform) %in% names(instruments)) {
         stop(sprintf("Not a recognized platform, please pick one of: %s",
@@ -268,7 +282,7 @@ sra_submission <- function(object, ...) {
         dir.create(config$out_dir, recursive = TRUE)
     }
     meta <- as.data.table(config$metadata)
-    preset <- presets[[config$preset]]
+    preset <- sra_presets[[config$preset]]
     files <- copy(files)
     setkey(files, id)
     if (!all(meta[[config$id_col]] %in% files$id)) {

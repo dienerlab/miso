@@ -60,7 +60,7 @@ Except for the `bioproject` (fill only if you already have a BIOPROJECT ID) vari
 specified (or the default values will be used). You can check the the list of available presets with:
 
 ```{r}
-names(miso:::presets)
+names(sra_presets)
 ```
 
 Let's fill in the data for the example study:

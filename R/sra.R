@@ -289,7 +289,7 @@ sra_submission <- function(object, ...) {
         stop("Some ids in the metadata have no matching files :(")
     }
     if (!all(files$id %in% meta[[config$id_col]])) {
-        file.info(paste0("Some file ids are not mentioned in the metadata. ",
+        flog.info(paste0("Some file ids are not mentioned in the metadata. ",
                          "Will assume that is intended and omit those."))
     }
     files <- files[config$metadata[[config$id_col]]]

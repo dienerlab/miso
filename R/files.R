@@ -11,7 +11,7 @@
 file_formats <- list(
     illumina = list(
         pattern =
-            "([A-Za-z0-9\\-\\.]+)_S(\\d+)(?:_trimmed)*(?:_L(\\d+))*_R(\\d+)_001.f",
+            "([A-Za-z0-9\\-\\.]+)_S*(\\d+)(?:_trimmed)*(?:_L(\\d+))*_R(\\d+)_001.f",
         annotations = c("id", "injection_order", "lane", "direction")
     ),
     sra = list(
@@ -48,7 +48,7 @@ annotate_files <- function(dir, format) {
     names(anns)[1] <- "forward"
     dupes <- duplicated(anns)
     if (any(dupes)) {
-        flog.error(paste("Some files have duplicated metadata. Please fix",
+        flog.error(paste("Some files have duplicated names. Please fix",
                         "the filenames or your pattern.",
                         "Duplicated files: %s"),
                    paste(unique(anns$forward[dupes])))

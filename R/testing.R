@@ -215,8 +215,8 @@ association <- function(ps, ...) {
     empty <- rowSums(counts) < config$presence_threshold
     if (sum(empty) > 0) {
         empty_sids <- rownames(counts)[empty]
-        log.info("The following samples are empty and are therefore dropped: %s",
-            paste0(empty_sids, collapse=","))
+        flog.warn("The following samples are empty and are therefore dropped: %s",
+            paste0(empty_sids, collapse=", "))
         counts <- counts[!empty, ]
     }
     meta <- meta[rownames(counts), , drop = FALSE]

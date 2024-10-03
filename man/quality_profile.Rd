@@ -5,7 +5,7 @@
 \title{Get the quality profiles and base calls for each cycle across all
 input files.}
 \usage{
-quality_profile(files, n = 10000)
+quality_profile(files, n = 10000, threads = 1)
 }
 \arguments{
 \item{files}{A data table containing the files as returned by
@@ -13,6 +13,8 @@ quality_profile(files, n = 10000)
 
 \item{n}{How many reads to sample from each file. If a file has less
 all of them will be used.}
+
+\item{threads}{How many threads to use for the analysis.}
 }
 \value{
 A list with two data tables giving the sampled metrics per cycle /

@@ -9,6 +9,7 @@
 #' @param min_score The smallest quality score still considered okayish.
 #' @param n Largest number of reads for each file. Will be sampled if more
 #'  are found.
+#' @param threads How many threads to use for the analysis.
 #' @export
 #' @return A list with the following elements:
 #' \describe{
@@ -19,7 +20,7 @@
 #'   \item{length_plot}{distribution of cycles that pass the quality cutoff}
 #'   \item{entropy_plot}{sample base entropy}
 #' }
-quality_control <- function(object, min_score = 10, n = 1e4) {
+quality_control <- function(object, min_score = 10, n = 1e4, threads = 1) {
     files <- get_files(object)
     qp <- quality_profile(files, n = n) %>% suppressPackageStartupMessages
     artifact <- list(

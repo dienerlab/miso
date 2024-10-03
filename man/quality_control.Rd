@@ -4,7 +4,7 @@
 \alias{quality_control}
 \title{Workflow for basic quality assessment of the read files.}
 \usage{
-quality_control(object, min_score = 10, n = 10000)
+quality_control(object, min_score = 10, n = 10000, threads = 1)
 }
 \arguments{
 \item{object}{An experiment data table as returned by
@@ -14,6 +14,8 @@ quality_control(object, min_score = 10, n = 10000)
 
 \item{n}{Largest number of reads for each file. Will be sampled if more
 are found.}
+
+\item{threads}{How many threads to use for the analysis.}
 }
 \value{
 A list with the following elements:

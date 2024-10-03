@@ -207,12 +207,20 @@ association <- function(ps, ...) {
     }
     variables <- variables[!(variables %in% config$confounders)]
     counts <- as.matrix(taxa_count(ps, lev = config$taxa_rank))
-    meta <- meta[rownames(counts), , drop = FALSE]
     too_rare <- (
         colSums(counts >= config$presence_threshold) /
         nrow(counts)) < config$in_samples
     too_few <- colMeans(counts) < config$min_abundance
     counts <- counts[, !(too_rare | too_few)]
+    empty <- rowSums(counts) < config$presence_threshold
+    if (sum(empty) > 0) {
+        empty_sids <- rownames(counts)[empty]
+        log.info("The following samples are empty and are therefore dropped: %s",
+            paste0(empty_sids, collapse=","))
+        counts <- counts[!empty, ]
+    }
+    meta <- meta[rownames(counts), , drop = FALSE]
+
     if (config$method == "deseq2") {
         iter <- iter_deseq2
     } else if (config$method == "voom") {

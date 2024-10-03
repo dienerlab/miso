@@ -49,6 +49,7 @@ library_size <- function(srqa) {
 #'  \code{\link{find_read_files}}.
 #' @param n How many reads to sample from each file. If a file has less
 #'  all of them will be used.
+#' @param threads How many threads to use for the analysis.
 #' @return A list with two data tables giving the sampled metrics per cycle /
 #'  base pair:
 #'  \describe{
@@ -57,10 +58,16 @@ library_size <- function(srqa) {
 #'  }
 #' @export
 #' @importFrom ShortRead qa
-quality_profile <- function(files, n = 1e4) {
+#' @importFrom BiocParallel SerialParam MulticoreParam
+quality_profile <- function(files, n = 1e4, threads = 1) {
     flog.info("Running quality assay for forward reads from %d files.",
               files[, .N])
-    srqa <- qa(files$forward, sample = TRUE, n = n)
+    if (threads > 1) {
+        bparam <- MulticoreParam(threads)
+    } else {
+        bparam <- SerialParam()
+    }
+    srqa <- qa(files$forward, sample = TRUE, n = n, BPPARAM = bparam)
     cycles <- qualities(srqa)
     bases <- basecalls(srqa)
     sizes <- library_size(srqa)

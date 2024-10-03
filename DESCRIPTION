@@ -46,7 +46,7 @@ Suggests:
 SystemRequirements:
     bowtie2,
     minimap2
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 LinkingTo:
     Rcpp

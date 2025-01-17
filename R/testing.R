@@ -206,7 +206,12 @@ association <- function(ps, ...) {
         variables <- config$variables
     }
     variables <- variables[!(variables %in% config$confounders)]
-    counts <- as.matrix(taxa_count(ps, lev = config$taxa_rank))
+    finest <- colnames(tax_table(ps))[ncol(tax_table(ps))]
+    if (config$taxa_rank == finest) {
+        counts <- as(otu_table(ps), "matrix")
+    } else {
+        counts <- as.matrix(taxa_count(ps, lev = config$taxa_rank))
+    }
     too_rare <- (
         colSums(counts >= config$presence_threshold) /
         nrow(counts)) < config$in_samples

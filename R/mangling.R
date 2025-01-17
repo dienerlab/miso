@@ -61,8 +61,9 @@ taxa_count <- function(ps, lev = "Genus", zeros = FALSE) {
         otus <- t(otus)
     }
     taxonomy <- as(tax_table(ps), "matrix")
+    finest <- colnames(taxonomy)[ncol(taxonomy)]
 
-    if (is.na(lev)) {
+    if (is.na(lev) || (lev == finest)) {
         counts <- as.data.table(otus, keep.rownames = TRUE)
         counts <- melt(counts, id.vars = "rn")
         names(counts) <- c("sample", "taxa", "reads")

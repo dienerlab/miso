@@ -79,8 +79,11 @@ demultiplex <- function(object, ...) {
     for (i in 1:nrow(files)) {
         flog.info("Processing ID %s...", files[i, id])
         istream <- FastqStreamer(files[i, index], n = config$n)
-        rstream <- files[i, lapply(.(forward, reverse), FastqStreamer,
-                                   n = config$n)]
+        rstream <- lapply(
+            list(files[i, forward], files[i, reverse]),
+            FastqStreamer,
+            n = config$n
+        )
         repeat {
             fq <- yield(istream)
             if (length(fq) == 0) break

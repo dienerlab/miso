@@ -42,7 +42,8 @@ Suggests:
     rmarkdown,
     corncob,
     VGAM,
-    vegan
+    vegan,
+    knitr
 SystemRequirements:
     bowtie2,
     minimap2

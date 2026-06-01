@@ -105,7 +105,7 @@ denoise <- function(object, ...) {
     feature_table <- list()
     for (r in files[, unique(run)]) {
         fi <- files[run == r]
-        dada_stats[[r]] <- data.table(id = fi$id)
+        dada_stats[[r]] <- data.table(id = as.character(fi$id))
         flog.info("Learning errors for run `%s` (%d samples)...", r, nrow(fi))
         errors[[r]] <- list()
         errors[[r]][["forward"]] <- learnErrors(
@@ -209,7 +209,7 @@ denoise <- function(object, ...) {
         } else {
             species_db <- config$species_db
         }
-        taxa <- addSpecies(taxa, species_db)
+        taxa <- addSpecies(taxa[, colnames(taxa) != "Species"], species_db)
     }
     seqs <- rownames(taxa)
     taxa <- cbind(taxa, sequence = seqs)

@@ -77,7 +77,7 @@ plot_counts <- function(ps, variable, tax_level = "genus", taxa = NULL,
 #' @importFrom stringr str_trunc
 plot_taxa <- function(ps, level = "Phylum", show_samples = TRUE, sort = TRUE,
                       max_taxa = 12, only_data = FALSE, ...) {
-    counts <- taxa_count(ps, lev=level)[, reads := as.double(reads)]
+    counts <- taxa_count(ps, lev=level, zeros=T)[, reads := as.double(reads)]
     counts[, reads := reads / sum(reads), by = "sample"]
     if (is.na(level)) {
         counts[, taxa := paste0(species, " ", taxa)]

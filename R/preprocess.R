@@ -80,7 +80,7 @@ preprocess <- function(object, ...) {
               passed_stats[, 100 * mean(preprocessed / raw)])
     artifact <- list(
         files = passed_files,
-        passed = passed_stats,
+        passed = passed_stats[, .(id, raw, preprocessed)],
         steps = c(object[["steps"]], "preprocess")
     )
     return(artifact)
